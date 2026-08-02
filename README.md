@@ -22,7 +22,8 @@ are not built yet; see `index.html` for the stage marker comment.
 |---|---|---|
 | Reversed white logo lockup | Nav (over dark hero) | **Real asset**: `assets/logo-full-white.png` (cropped + background removed from `assets/vanora_logo.png`, the owner-supplied source file, tagline excluded per the nav spec) |
 | Navy logo lockup | Nav (solid/scrolled state) | **Real asset**: `assets/logo-full-navy.png` (cropped + background removed from `assets/vanora logo b.png`, same treatment as the white version) |
-| VP monogram icon | Mobile nav + favicon | Placeholder: `assets/logo-icon-vp-placeholder.svg` |
+| VP monogram icon | Mobile nav overlay (dark bg) | **Real asset**: `assets/logo-icon-vp-white.png` |
+| VP monogram icon | Favicon (light tab bg) | **Real asset**: `assets/logo-icon-vp-navy.png` |
 | Hero visual (4:5) | Hero, right column | Placeholder: inline `.hero__visual` div in `index.html` |
 | OG image (1200×630) | `<meta property="og:image">` | Placeholder: `assets/og-image-placeholder.svg` |
 | Full lockups with tagline | Reserved for About/footer (not built yet) | Source available as-is: `assets/vanora_logo.png` (white/navy bg), `assets/vanora logo b.png` (navy/gold on white bg) |
