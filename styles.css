@@ -249,7 +249,7 @@ h1, h2, h3, p { margin: 0; }
 .nav__logo {
   position: relative;
   display: block;
-  width: 180px;
+  width: 210px;
   height: 40px;
   flex-shrink: 0;
 }
@@ -258,6 +258,8 @@ h1, h2, h3, p { margin: 0; }
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  object-position: left center;
   transition: opacity 250ms ease;
 }
 .nav__logo-img--white { opacity: 1; }
