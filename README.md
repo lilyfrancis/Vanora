@@ -12,7 +12,7 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 1 of N — foundation, nav, hero.** Remaining sections (trust bar, tension,
+**Stage 2 of N — foundation, nav, hero, trust bar.** Remaining sections (tension,
 services, process, results, why-Vanora, about, testimonials, final CTA, footer)
 are not built yet; see `index.html` for the stage marker comment.
 
@@ -33,8 +33,14 @@ or update the one `src`/`href` reference in `index.html`). The hero visual
 placeholder is a styled `<div>`; swap it for an `<img>` with the same
 `.hero__visual` wrapper.
 
-## Known open question
-`vanora-partners-website-brief.md` specifies the solid-state nav link hover
-color as `--gold` (`#C6A15A`) on `--ivory` (`#FAF8F3`) background. Measured
-contrast is **2.29:1**, which fails WCAG AA for text (needs 4.5:1). Flagged
-for the owner — see Stage 1 handoff notes.
+## Known open questions
+1. `vanora-partners-website-brief.md` specifies the solid-state nav link hover
+   color as `--gold` (`#C6A15A`) on `--ivory` (`#FAF8F3`) background. Measured
+   contrast is **2.29:1**, which fails WCAG AA for text (needs 4.5:1). Owner
+   confirmed acceptable as-is for Stage 1.
+2. Same `--gold` on `--ivory` pairing is used for the trust-bar stat numbers
+   (`.stat__number`, 32px). Even at large-text size this needs 3:1; measured
+   contrast is still **2.29:1**. Not yet resolved — flagging for the owner.
+3. Trust-bar stat numbers (`4`, `90 days`, `15+ yrs`) are marked as
+   placeholders in the brief itself ("confirm real numbers") — not swapped
+   for real figures yet.
