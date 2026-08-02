@@ -21,11 +21,11 @@ are not built yet; see `index.html` for the stage marker comment.
 | Asset | Used in | Status |
 |---|---|---|
 | Reversed white logo lockup | Nav (over dark hero) | **Real asset**: `assets/logo-full-white.png` (cropped + background removed from `assets/vanora_logo.png`, the owner-supplied source file, tagline excluded per the nav spec) |
-| Navy logo lockup | Nav (solid/scrolled state) | Placeholder: `assets/logo-full-navy-placeholder.svg` — no navy-colored source supplied yet |
+| Navy logo lockup | Nav (solid/scrolled state) | **Real asset**: `assets/logo-full-navy.png` (cropped + background removed from `assets/vanora logo b.png`, same treatment as the white version) |
 | VP monogram icon | Mobile nav + favicon | Placeholder: `assets/logo-icon-vp-placeholder.svg` |
 | Hero visual (4:5) | Hero, right column | Placeholder: inline `.hero__visual` div in `index.html` |
 | OG image (1200×630) | `<meta property="og:image">` | Placeholder: `assets/og-image-placeholder.svg` |
-| Full lockup with tagline | Reserved for About/footer (not built yet) | Source available as-is: `assets/vanora_logo.png` |
+| Full lockups with tagline | Reserved for About/footer (not built yet) | Source available as-is: `assets/vanora_logo.png` (white/navy bg), `assets/vanora logo b.png` (navy/gold on white bg) |
 
 To swap a placeholder, replace the file at the same path (keep the filename,
 or update the one `src`/`href` reference in `index.html`). The hero visual
