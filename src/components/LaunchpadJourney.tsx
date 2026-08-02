@@ -8,9 +8,15 @@ import { useReducedMotion } from '@/lib/useReducedMotion'
 gsap.registerPlugin(ScrollTrigger)
 
 function StagePanel({ stage }: { stage: (typeof launchpadStages)[number] }) {
+  const Icon = stage.icon
   return (
-    <div className="flex w-[82vw] shrink-0 flex-col rounded-2xl border border-white/10 bg-ink p-8 sm:w-[420px]">
-      <span className="eyebrow text-gold-lite">{stage.number}</span>
+    <div className="glow-card group flex w-[82vw] shrink-0 flex-col rounded-2xl border border-white/10 bg-ink p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-transparent hover:shadow-[0_25px_60px_-25px_rgba(201,162,75,0.35)] sm:w-[420px]">
+      <div className="flex items-center justify-between">
+        <span className="eyebrow text-gold-lite">{stage.number}</span>
+        <span className="flex size-11 items-center justify-center rounded-full bg-ink-3 text-gold-lite transition-colors group-hover:bg-gold/15">
+          <Icon size={20} />
+        </span>
+      </div>
       <h3 className="mt-4 font-display text-2xl text-cloud">{stage.title}</h3>
       <p className="mt-3 text-mist">{stage.descriptor}</p>
       <ul className="mt-6 flex flex-col gap-2.5">
