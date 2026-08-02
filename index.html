@@ -1,22 +1,101 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vanora Partners — strategy and execution firm, a division of Techbots Group. Strategy. Installed." />
-    <title>Vanora Partners — Strategy. Installed.</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanora Partners — Strategy. Installed.</title>
+  <meta name="description" content="Vanora Partners is the strategy and execution firm that builds your growth systems and stays until they run.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <meta property="og:title" content="Vanora Partners — Strategy. Installed.">
+  <meta property="og:description" content="Vanora Partners is the strategy and execution firm that builds your growth systems and stays until they run.">
+  <meta property="og:image" content="assets/og-image-placeholder.svg">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="assets/logo-icon-vp-placeholder.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav__logo" href="#top" aria-label="Vanora Partners — home">
+        <img class="nav__logo-img nav__logo-img--white" src="assets/logo-full-white-placeholder.svg" alt="Vanora Partners" width="180" height="40">
+        <img class="nav__logo-img nav__logo-img--navy" src="assets/logo-full-navy-placeholder.svg" alt="Vanora Partners" width="180" height="40">
+      </a>
+
+      <ul class="nav__links">
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <a href="#contact" class="btn btn--primary nav__cta">Book a strategy call</a>
+
+      <button type="button" class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <img class="mobile-menu__icon" src="assets/logo-icon-vp-placeholder.svg" alt="" width="48" height="48">
+    <nav class="mobile-menu__links" aria-label="Mobile navigation">
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#results">Results</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="#contact" class="btn btn--primary">Book a strategy call</a>
+  </div>
+
+  <main>
+    <section id="hero" class="hero on-dark">
+      <div class="hero__ambient" aria-hidden="true">
+        <span class="hero__diamond">&#9670;</span>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow reveal-load" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Strategy. Installed.
+          </p>
+
+          <h1 class="hero__heading">
+            <span class="hero__line reveal-load" style="--delay:120ms">Most firms hand you a strategy.</span>
+            <span class="hero__line hero__line--emphasis reveal-load" style="--delay:240ms">We <span class="hero__install">install</span> it.</span>
+          </h1>
+
+          <p class="hero__subhead reveal-load" style="--delay:300ms">
+            Vanora Partners builds your growth strategy and stays to execute it — the systems, the revenue engine, the operating cadence. No orphaned decks. No theory. Just infrastructure that runs long after the engagement ends.
+          </p>
+
+          <div class="hero__ctas reveal-load" style="--delay:450ms">
+            <a href="#contact" class="btn btn--primary">Book a strategy call</a>
+            <a href="#approach" class="link-arrow">See how we work <span aria-hidden="true">&rarr;</span></a>
+          </div>
+
+          <p class="hero__credibility reveal-load" style="--delay:450ms">Strategy and execution for firms that need results, not slideware</p>
+        </div>
+
+        <div class="hero__visual reveal-load" style="--delay:150ms">
+          <div class="placeholder placeholder--portrait">
+            <span class="placeholder__label">HERO VISUAL — 4:5<br>SUPPLY hero-visual.jpg</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage 2+: Trust bar, Tension, Services, Process, Results, Why Vanora, About, Testimonials, Final CTA, Footer -->
+  </main>
+
+  <script src="main.js"></script>
+</body>
 </html>
