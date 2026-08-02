@@ -44,7 +44,7 @@ export function Nav() {
       <nav
         className={cn(
           'flex w-full max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-500',
-          condensed ? 'border border-white/10 bg-ink/70 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.25)]' : 'bg-transparent',
+          condensed ? 'border border-white/10 bg-ink/95 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.25)]' : 'bg-transparent',
         )}
       >
         <Link to="/" className="font-display text-lg tracking-tight text-cloud">
