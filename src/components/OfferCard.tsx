@@ -8,13 +8,18 @@ export function OfferCard({ offer }: { offer: Offer }) {
   const Icon = offer.icon
   const reduced = useReducedMotion()
   return (
-    <div className="group relative flex h-full flex-col rounded-2xl border border-line bg-cloud p-7 transition-shadow hover:shadow-[0_20px_45px_-20px_rgba(14,22,48,0.25)]">
+    <div className="glow-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cloud p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-transparent hover:shadow-[0_25px_55px_-25px_rgba(14,22,48,0.3)]">
+      <span
+        className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-gold/0 blur-2xl transition-colors duration-500 group-hover:bg-gold/10"
+        aria-hidden="true"
+      />
       <motion.span
-        className="flex size-12 items-center justify-center rounded-full bg-ink text-gold-lite"
+        className="relative flex size-12 items-center justify-center rounded-full bg-ink text-gold-lite"
         whileHover={{ rotate: -8, scale: 1.08 }}
         transition={{ type: 'spring', stiffness: 300, damping: 15 }}
       >
-        <Icon size={22} />
+        <span className="icon-glow" aria-hidden="true" />
+        <Icon size={22} className="relative" />
       </motion.span>
 
       <h3 className="mt-5 font-display text-xl text-slate">{offer.title}</h3>

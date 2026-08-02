@@ -7,6 +7,10 @@ export function CTASection() {
   return (
     <section className="relative overflow-hidden bg-ink py-32 text-center text-cloud md:py-44">
       <div className="hero-mesh opacity-60" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-gold/60 to-transparent"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto max-w-4xl px-6">
         <Reveal as="h2" className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.08]">
           We don't just plan the business. We build it, staff it, brand it and scale it.

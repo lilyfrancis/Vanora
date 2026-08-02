@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -18,6 +18,8 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const lastY = useRef(0)
   const location = useLocation()
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 })
 
   useEffect(() => {
     function onScroll() {
@@ -38,6 +40,7 @@ export function Nav() {
       animate={{ y: hidden ? -100 : 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
+      <motion.span className="scroll-progress" style={{ scaleX: progress }} aria-hidden="true" />
       <nav
         className={cn(
           'flex w-full max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-500',

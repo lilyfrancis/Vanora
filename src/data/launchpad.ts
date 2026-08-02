@@ -1,9 +1,12 @@
+import { Compass, FileCheck2, Hammer, Rocket, type LucideIcon } from 'lucide-react'
+
 export interface LaunchpadStage {
   id: string
   number: string
   title: string
   descriptor: string
   details: string[]
+  icon: LucideIcon
 }
 
 export const launchpadStages: LaunchpadStage[] = [
@@ -13,6 +16,7 @@ export const launchpadStages: LaunchpadStage[] = [
     title: 'Validate & Structure',
     descriptor: 'Idea, model, market validation, strategy.',
     details: ['Idea & market validation', 'Business model design', 'Go-to-market strategy'],
+    icon: Compass,
   },
   {
     id: 'register',
@@ -20,6 +24,7 @@ export const launchpadStages: LaunchpadStage[] = [
     title: 'Register & Establish',
     descriptor: 'Company registration in Nigeria + US / UK, banking & compliance.',
     details: ['Company registration — Nigeria, US, UK', 'Banking setup', 'Regulatory compliance'],
+    icon: FileCheck2,
   },
   {
     id: 'build',
@@ -27,6 +32,7 @@ export const launchpadStages: LaunchpadStage[] = [
     title: 'Build',
     descriptor: 'Branding, website, StackForge tools & first hires.',
     details: ['Brand identity & website', 'StackForge tool deployment', 'First key hires'],
+    icon: Hammer,
   },
   {
     id: 'grow',
@@ -34,5 +40,6 @@ export const launchpadStages: LaunchpadStage[] = [
     title: 'Grow',
     descriptor: 'Plug in revenue systems & advisory until the milestone is hit.',
     details: ['Revenue system installation', 'Ongoing advisory', 'Scale to milestone or raise'],
+    icon: Rocket,
   },
 ]

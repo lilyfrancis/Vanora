@@ -25,7 +25,7 @@ export function Positioning() {
         </div>
 
         <RevealGroup stagger={0.1} className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
-          <RevealItem className="rounded-2xl border border-line bg-paper p-7">
+          <RevealItem className="rounded-2xl border border-line bg-paper p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_-25px_rgba(14,22,48,0.2)]">
             <p className="eyebrow text-mist">Others</p>
             <ul className="mt-5 flex flex-col gap-4">
               {others.map((item) => (
@@ -37,8 +37,12 @@ export function Positioning() {
             </ul>
           </RevealItem>
 
-          <RevealItem className="rounded-2xl border border-ink-3 bg-ink p-7 text-cloud">
-            <p className="eyebrow text-gold-lite">Vanora</p>
+          <RevealItem className="glow-card relative overflow-hidden rounded-2xl border border-ink-3 bg-ink p-7 text-cloud transition-all duration-500 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_25px_60px_-25px_rgba(201,162,75,0.4)]">
+            <span
+              className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-gold/10 blur-3xl"
+              aria-hidden="true"
+            />
+            <p className="eyebrow relative text-gold-lite">Vanora</p>
             <ul className="mt-5 flex flex-col gap-4">
               {vanora.map((item, i) => (
                 <RevealItem key={item} as="li" className="flex items-start gap-3 text-[15px]">
