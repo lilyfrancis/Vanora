@@ -8,6 +8,7 @@
   --navy-deep: #0A1424;
   --gold: #C6A15A;
   --gold-soft: #D9C08A;
+  --gold-deep: #86682E; /* not in CLAUDE.md — added for AA text contrast on --ivory (4.91:1); use only where --gold text sits on a light bg */
   --champagne: #EFE7D6;
   --ivory: #FAF8F3;
   --slate: #5B6473;
@@ -514,7 +515,7 @@ h1, h2, h3, p { margin: 0; }
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 2rem;
-  color: var(--gold);
+  color: var(--gold-deep);
   line-height: 1;
 }
 .stat__label {
