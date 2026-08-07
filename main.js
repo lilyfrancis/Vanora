@@ -84,4 +84,44 @@
       revealObserver.observe(el);
     });
   }
+
+  var processTrack = document.getElementById('processTrack');
+  if (processTrack) {
+    var processNodes = processTrack.querySelectorAll('.process__node');
+
+    if (prefersReducedMotion) {
+      processTrack.style.setProperty('--progress', 1);
+      processNodes.forEach(function (node) {
+        node.classList.add('is-lit');
+      });
+    } else {
+      var processTicking = false;
+
+      var updateProcessProgress = function () {
+        var rect = processTrack.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = rect.height + vh;
+        var scrolled = vh - rect.top;
+        var progress = Math.max(0, Math.min(1, scrolled / total));
+
+        processTrack.style.setProperty('--progress', progress);
+
+        processNodes.forEach(function (node, i) {
+          var threshold = i / (processNodes.length - 1);
+          node.classList.toggle('is-lit', progress >= threshold - 0.02);
+        });
+
+        processTicking = false;
+      };
+
+      window.addEventListener('scroll', function () {
+        if (!processTicking) {
+          window.requestAnimationFrame(updateProcessProgress);
+          processTicking = true;
+        }
+      }, { passive: true });
+
+      updateProcessProgress();
+    }
+  }
 })();
