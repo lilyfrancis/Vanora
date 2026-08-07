@@ -163,4 +163,28 @@
       countObserver.observe(el);
     });
   }
+
+  var aboutVisual = document.getElementById('aboutVisual');
+  if (aboutVisual && !prefersReducedMotion) {
+    var aboutTicking = false;
+
+    var updateAboutParallax = function () {
+      var rect = aboutVisual.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var center = rect.top + rect.height / 2;
+      var offset = (vh / 2 - center) * 0.08;
+      offset = Math.max(-28, Math.min(28, offset));
+      aboutVisual.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+      aboutTicking = false;
+    };
+
+    window.addEventListener('scroll', function () {
+      if (!aboutTicking) {
+        window.requestAnimationFrame(updateAboutParallax);
+        aboutTicking = true;
+      }
+    }, { passive: true });
+
+    updateAboutParallax();
+  }
 })();

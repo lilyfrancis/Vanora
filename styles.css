@@ -921,6 +921,44 @@ h1, h2, h3, p { margin: 0; }
 }
 
 /* ==========================================================================
+   About
+   ========================================================================== */
+.about {
+  background: var(--ivory);
+  padding: var(--section-padding) 0;
+}
+.about__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.about__heading {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.about__body {
+  margin-top: 1.5rem;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--slate);
+}
+.about__link {
+  margin-top: 2rem;
+}
+.about__visual {
+  will-change: transform;
+}
+
+/* ==========================================================================
    Motion — load-in stagger (hero) + reduced motion
    ========================================================================== */
 .reveal-load {
@@ -1057,6 +1095,16 @@ h1, h2, h3, p { margin: 0; }
     padding-top: 3rem;
     border-left: none;
     border-top: 1px solid var(--gold);
+  }
+
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .about__visual {
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
