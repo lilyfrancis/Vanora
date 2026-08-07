@@ -12,8 +12,8 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 8 of N — foundation, nav, hero, trust bar, tension, services, process,
-results, why-Vanora, about.** Remaining sections (testimonials, final CTA,
+**Stage 9 of N — foundation, nav, hero, trust bar, tension, services, process,
+results, why-Vanora, about, testimonials.** Remaining sections (final CTA,
 footer) are not built yet; see `index.html` for the stage marker comment.
 
 ## Assets
@@ -28,6 +28,8 @@ footer) are not built yet; see `index.html` for the stage marker comment.
 | OG image (1200×630) | `<meta property="og:image">` | Placeholder: `assets/og-image-placeholder.svg` |
 | Case images ×3 (3:2) | Results section case cards | Placeholder: inline `.case-card__image` divs in `index.html` |
 | About visual (4:5) | About section, right column | Placeholder: inline `.placeholder` div in `index.html` (`#aboutVisual`) |
+| Testimonial avatar (64px circle) | Testimonials section | Placeholder: `.placeholder--avatar` div in `index.html` |
+| Testimonial quote attribution (name/title/company) | Testimonials section | Bracketed placeholder text — the quote itself is real dummy copy from the brief, only the attribution is unknown |
 | Case study 2 & 3 copy | Results section | Placeholder text in `index.html`, bracketed — case 1 uses the brief's real copy, cases 2/3 are explicitly marked in the brief as owner-supplied |
 | Full lockups with tagline | Reserved for About/footer (not built yet) | Source available as-is: `assets/vanora_logo.png` (white/navy bg), `assets/vanora logo b.png` (navy/gold on white bg) |
 
@@ -50,3 +52,8 @@ placeholder is a styled `<div>`; swap it for an `<img>` with the same
 3. Trust-bar stat numbers (`4`, `90 days`, `15+ yrs`) are marked as
    placeholders in the brief itself ("confirm real numbers") — not swapped
    for real figures yet.
+4. Testimonials built as a single pull-quote, not the brief's `[CHOOSE]`
+   carousel alternative — the brief only supplies one dummy quote, so a
+   carousel would have nothing real to slide between. If 2-3 real
+   testimonials come in, this section should be rebuilt as the carousel
+   variant instead.
