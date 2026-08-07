@@ -12,8 +12,8 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 3 of N — foundation, nav, hero, trust bar, tension.** Remaining sections
-(services, process, results, why-Vanora, about, testimonials, final CTA, footer)
+**Stage 4 of N — foundation, nav, hero, trust bar, tension, services.** Remaining
+sections (process, results, why-Vanora, about, testimonials, final CTA, footer)
 are not built yet; see `index.html` for the stage marker comment.
 
 ## Assets
