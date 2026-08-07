@@ -12,8 +12,8 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 6 of N — foundation, nav, hero, trust bar, tension, services, process,
-results.** Remaining sections (why-Vanora, about, testimonials, final CTA,
+**Stage 7 of N — foundation, nav, hero, trust bar, tension, services, process,
+results, why-Vanora.** Remaining sections (about, testimonials, final CTA,
 footer) are not built yet; see `index.html` for the stage marker comment.
 
 ## Assets
@@ -41,9 +41,11 @@ placeholder is a styled `<div>`; swap it for an `<img>` with the same
    contrast is **2.29:1**, which fails WCAG AA for text (needs 4.5:1). Owner
    confirmed acceptable as-is for Stage 1.
 2. ~~Same `--gold` on `--ivory` pairing is used for the trust-bar stat
-   numbers~~ — **resolved**: added `--gold-deep` (`#86682E`, not in
-   CLAUDE.md's token set) for gold text on light backgrounds, used for
-   `.stat__number`. Contrast is now 4.91:1 (passes AA at any text size).
+   numbers~~ — **resolved**: added `--gold-deep` (not in CLAUDE.md's token
+   set) for gold text/icons on light backgrounds — `.stat__number`, the
+   Why-Vanora column label and tick marks. Retuned once (now `#795E2A`) so
+   it clears AA on both `--ivory` (5.74:1) and `--champagne` (4.95:1), the
+   two light backgrounds it's used against so far.
 3. Trust-bar stat numbers (`4`, `90 days`, `15+ yrs`) are marked as
    placeholders in the brief itself ("confirm real numbers") — not swapped
    for real figures yet.

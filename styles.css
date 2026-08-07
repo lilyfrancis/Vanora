@@ -8,7 +8,7 @@
   --navy-deep: #0A1424;
   --gold: #C6A15A;
   --gold-soft: #D9C08A;
-  --gold-deep: #86682E; /* not in CLAUDE.md — added for AA text contrast on --ivory (4.91:1); use only where --gold text sits on a light bg */
+  --gold-deep: #795E2A; /* not in CLAUDE.md — added for AA contrast where --gold text/icons sit on a light bg (5.74:1 on --ivory, 4.95:1 on --champagne) */
   --champagne: #EFE7D6;
   --ivory: #FAF8F3;
   --slate: #5B6473;
@@ -848,6 +848,79 @@ h1, h2, h3, p { margin: 0; }
 }
 
 /* ==========================================================================
+   Why Vanora
+   ========================================================================== */
+.why-vanora {
+  background: var(--champagne);
+  padding: var(--section-padding) 0;
+}
+.why-vanora__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.why-vanora__heading {
+  margin-top: 1.25rem;
+  max-width: 640px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.why-vanora__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.why-vanora__col--vanora {
+  padding-left: 4rem;
+  border-left: 1px solid var(--gold);
+}
+
+.why-vanora__col-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.why-vanora__col-label--others {
+  color: var(--slate);
+}
+.why-vanora__col-label--vanora {
+  color: var(--gold-deep);
+}
+
+.why-vanora__list {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.why-vanora__list li {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+.why-vanora__col:not(.why-vanora__col--vanora) .why-vanora__list li {
+  color: var(--slate);
+}
+.why-vanora__list--ticked li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.why-vanora__tick {
+  color: var(--gold-deep);
+  font-size: 0.7em;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
    Motion — load-in stagger (hero) + reduced motion
    ========================================================================== */
 .reveal-load {
@@ -973,6 +1046,17 @@ h1, h2, h3, p { margin: 0; }
 
   .results__grid {
     grid-template-columns: 1fr;
+  }
+
+  .why-vanora__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .why-vanora__col--vanora {
+    padding-left: 0;
+    padding-top: 3rem;
+    border-left: none;
+    border-top: 1px solid var(--gold);
   }
 }
 
