@@ -12,9 +12,9 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 5 of N — foundation, nav, hero, trust bar, tension, services, process.**
-Remaining sections (results, why-Vanora, about, testimonials, final CTA, footer)
-are not built yet; see `index.html` for the stage marker comment.
+**Stage 6 of N — foundation, nav, hero, trust bar, tension, services, process,
+results.** Remaining sections (why-Vanora, about, testimonials, final CTA,
+footer) are not built yet; see `index.html` for the stage marker comment.
 
 ## Assets
 
@@ -26,6 +26,8 @@ are not built yet; see `index.html` for the stage marker comment.
 | VP monogram icon | Favicon (light tab bg) | **Real asset**: `assets/logo-icon-vp-navy.png` |
 | Hero visual (4:5) | Hero, right column | Placeholder: inline `.hero__visual` div in `index.html` |
 | OG image (1200×630) | `<meta property="og:image">` | Placeholder: `assets/og-image-placeholder.svg` |
+| Case images ×3 (3:2) | Results section case cards | Placeholder: inline `.case-card__image` divs in `index.html` |
+| Case study 2 & 3 copy | Results section | Placeholder text in `index.html`, bracketed — case 1 uses the brief's real copy, cases 2/3 are explicitly marked in the brief as owner-supplied |
 | Full lockups with tagline | Reserved for About/footer (not built yet) | Source available as-is: `assets/vanora_logo.png` (white/navy bg), `assets/vanora logo b.png` (navy/gold on white bg) |
 
 To swap a placeholder, replace the file at the same path (keep the filename,

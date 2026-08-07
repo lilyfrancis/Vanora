@@ -124,4 +124,43 @@
       updateProcessProgress();
     }
   }
+
+  var countEls = document.querySelectorAll('[data-count-to]');
+
+  function runCount(el) {
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    if (prefersReducedMotion) {
+      el.textContent = target;
+      return;
+    }
+    var duration = 1200;
+    var start = null;
+
+    function step(timestamp) {
+      if (start === null) start = timestamp;
+      var elapsed = timestamp - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    }
+    window.requestAnimationFrame(step);
+  }
+
+  if (countEls.length) {
+    var countObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          runCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    countEls.forEach(function (el) {
+      countObserver.observe(el);
+    });
+  }
 })();
