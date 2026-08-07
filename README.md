@@ -12,9 +12,9 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 9 of N — foundation, nav, hero, trust bar, tension, services, process,
-results, why-Vanora, about, testimonials.** Remaining sections (final CTA,
-footer) are not built yet; see `index.html` for the stage marker comment.
+**Stage 10 of N — foundation, nav, hero, trust bar, tension, services, process,
+results, why-Vanora, about, testimonials, final CTA.** Only the footer remains;
+see `index.html` for the stage marker comment.
 
 ## Assets
 
@@ -57,3 +57,9 @@ placeholder is a styled `<div>`; swap it for an `<img>` with the same
    carousel would have nothing real to slide between. If 2-3 real
    testimonials come in, this section should be rebuilt as the carousel
    variant instead.
+5. The Final CTA's primary button ("Book a strategy call") has no supplied
+   booking link (no Calendly/Cal.com URL in the brief). Rather than leave it
+   dead or invent a fake scheduling URL, it points to
+   `mailto:hello@vanorapartners.com` as an interim, functional fallback —
+   swap `.final-cta__cta`'s `href` in `index.html` for the real booking link
+   once you have one.

@@ -1008,6 +1008,71 @@ h1, h2, h3, p { margin: 0; }
 }
 
 /* ==========================================================================
+   Final CTA
+   ========================================================================== */
+.final-cta {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-deep);
+  padding: var(--section-padding) 0;
+  text-align: center;
+}
+.final-cta__watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 28rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.04;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: driftRotate 60s linear infinite;
+}
+.final-cta__inner {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.final-cta__heading {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--ivory);
+}
+.final-cta__sub {
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(250, 248, 243, 0.8);
+}
+.final-cta__cta {
+  margin-top: 2.25rem;
+}
+.btn--glow:hover {
+  box-shadow: 0 0 32px rgba(198, 161, 90, 0.45);
+}
+.final-cta__email {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, 0.6);
+}
+.final-cta__email a {
+  color: var(--gold-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.final-cta__email a:hover {
+  color: var(--gold);
+}
+
+/* ==========================================================================
    Motion — load-in stagger (hero) + reduced motion
    ========================================================================== */
 .reveal-load {
@@ -1059,7 +1124,8 @@ h1, h2, h3, p { margin: 0; }
     transform: scaleX(1);
     animation: none;
   }
-  .hero__diamond {
+  .hero__diamond,
+  .final-cta__watermark {
     animation: none;
   }
   .process__line-fill {
