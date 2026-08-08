@@ -12,9 +12,15 @@ python3 -m http.server 8080
 Then open `http://localhost:8080/`.
 
 ## Build status
-**Stage 10 of N — foundation, nav, hero, trust bar, tension, services, process,
-results, why-Vanora, about, testimonials, final CTA.** Only the footer remains;
-see `index.html` for the stage marker comment.
+**Complete — all 11 sections built:** nav, hero, trust bar, tension, services,
+process, results, why-Vanora, about, testimonials, final CTA, footer.
+
+Verified end-to-end: HTML is well-formed (no mismatched tags), all asset
+references resolve to real files, no console/page errors on load, and all 45
+`.reveal` elements correctly animate in under real scroll input (checked via
+simulated wheel-scroll through the full page — an earlier check using
+`scroll-behavior: smooth`-affected programmatic jumps gave a false alarm,
+resolved by testing with real wheel events instead).
 
 ## Assets
 
@@ -31,7 +37,7 @@ see `index.html` for the stage marker comment.
 | Testimonial avatar (64px circle) | Testimonials section | Placeholder: `.placeholder--avatar` div in `index.html` |
 | Testimonial quote attribution (name/title/company) | Testimonials section | Bracketed placeholder text — the quote itself is real dummy copy from the brief, only the attribution is unknown |
 | Case study 2 & 3 copy | Results section | Placeholder text in `index.html`, bracketed — case 1 uses the brief's real copy, cases 2/3 are explicitly marked in the brief as owner-supplied |
-| Full lockups with tagline | Reserved for About/footer (not built yet) | Source available as-is: `assets/vanora_logo.png` (white/navy bg), `assets/vanora logo b.png` (navy/gold on white bg) |
+| Full lockups with tagline | Unused directly — About/footer use the tagline as text plus the cropped/transparent logo, not the flattened source image | Source available as-is: `assets/vanora_logo.png` (white/navy bg), `assets/vanora logo b.png` (navy/gold on white bg) — could swap in as the OG image |
 
 To swap a placeholder, replace the file at the same path (keep the filename,
 or update the one `src`/`href` reference in `index.html`). The hero visual
