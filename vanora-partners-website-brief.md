@@ -1,7 +1,9 @@
-# Vanora Partners — Website Build Brief
+# Vanora Partners — Website Build Brief (v2: AI-Powered Revenue Growth Repositioning)
 
 **For: Claude Code**
-**Goal:** Rebuild vanorapartners.com into a premium, high-converting strategy-and-execution consulting site. This document is the single source of truth. Follow it section by section. All copy below is final unless marked `[CHOOSE]`.
+**Goal:** Reposition vanorapartners.com as a premium, high-converting AI-powered revenue growth and business transformation site — **same brand, same visual identity, new positioning.** This document is the single source of truth for copy, sections, and layout. Follow it section by section. All copy below is final unless marked `[CHOOSE]` or `[PLACEHOLDER]`. Guardrails (tokens, non-negotiables) live in `CLAUDE.md` — this file is the content and layout spec that implements them.
+
+This supersedes the v1 "strategy and execution consulting firm" brief. Section 1–11 of the old build (nav, hero, tension, services, process, results, why-Vanora, about, testimonials, final CTA, footer) are being replaced by the 17-section structure below. Reuse working code (nav scroll-state logic, IntersectionObserver reveal system, count-up utility, glassmorphism CSS, diamond-motif SVG) — don't rebuild plumbing that already works.
 
 ---
 
@@ -9,336 +11,406 @@
 
 - Every section has: **PURPOSE**, **LAYOUT**, **COPY** (use verbatim), **IMAGE**, **MOTION**.
 - Copy inside `""` is final website copy — paste it as-is.
-- `[IMAGE PLACEHOLDER: …]` means insert a placeholder div/image now; I (the owner) will supply the real asset. Build it so swapping in a real image is a one-line change.
-- `[CHOOSE]` means two options are offered — implement the first one; leave the second as a commented-out alternative.
-- Do not invent extra sections or filler copy. If something is missing, leave a clearly labelled placeholder.
+- `[IMAGE PLACEHOLDER: …]` means insert a placeholder div/image now; the owner will supply the real asset. Build it so swapping in a real image is a one-line change.
+- `[PLACEHOLDER]` means no fabricated content goes here — leave a clearly labelled gap.
+- Do not invent extra sections, fake stats, fake client names, or fake testimonials. If something is missing, leave a clearly labelled placeholder.
+- Design tokens, type, motion discipline, and the non-negotiable rules are defined once in `CLAUDE.md` — don't redefine them differently here. In particular: navy/gold/ivory/cobalt palette (not the cobalt-heavy palette a draft of this brief once suggested), Fraunces/Inter Tight/IBM Plex Mono type (not Manrope/Sora), no violet.
 
 ---
 
 ## 1. Positioning & voice
 
-**What Vanora Partners is:** a strategy *and execution* firm. Vanora doesn't sell decks; it builds the growth systems, revenue engines, and operating infrastructure and stays until they run.
+**What Vanora Partners is now:** an international AI-powered revenue growth and business transformation company. Vanora combines strategy, AI, revenue systems, automation, talent and hands-on execution to help ambitious companies sell more, collect faster, operate better and scale intelligently.
 
-**The one job of this page:** make a serious growth-stage or enterprise buyer think *"these people actually implement — they're different"* and book a strategy call.
+**The one job of this page:** make a serious buyer think *"these people actually implement"* and book a strategy session — in under five seconds of landing, communicate: *Vanora Partners builds and installs the systems that help companies grow.*
 
-**Primary tagline (use this):** `Strategy. Installed.`
-**Secondary/support line (from logo, use in footer + about):** `Strategy Beyond Expectations`
+**Primary tagline (use this):** `Strategy. Installed.` — now the hero eyebrow, carried through as the differentiator.
+**Secondary/support line (from the logo, use in About + footer only):** `Strategy Beyond Expectations`
 
-**Voice:** confident, precise, understated luxury. Short declarative sentences. No hype words ("revolutionary," "cutting-edge," "unlock," "leverage synergies"). Say what happens in plain terms. The prestige comes from restraint, not adjectives.
+**Voice:** confident, precise, understated luxury. Short declarative sentences. No hype words ("revolutionary," "cutting-edge," "unlock," "leverage," "seamless"). Say what happens in plain terms. The prestige comes from restraint, not adjectives. Buttons use sentence case (not full caps) per the existing button system in `CLAUDE.md` §2.5 — the brief text below renders CTAs in caps for emphasis only; implement them sentence-case.
 
-**Audience:** founders, CEOs, and growth/revenue leaders at funded startups, scale-ups, SaaS/FinTech, and established firms who are tired of consultants who disappear after the presentation.
-
----
-
-## 2. Design system (derive EVERY color and font from this)
-
-### 2.1 Color tokens
-Define these as CSS variables in `:root`.
-
-```css
-:root{
-  --ink:        #0E1A33; /* primary navy — text on light, dark section bg */
-  --midnight:   #16264A; /* slightly lifted navy for layered dark sections */
-  --navy-deep:  #0A1424; /* near-black navy for footer / max contrast */
-  --gold:       #C6A15A; /* brand gold — accents, rules, key words, hovers */
-  --gold-soft:  #D9C08A; /* lighter gold for hover states on dark bg */
-  --champagne:  #EFE7D6; /* pale gold tint — subtle section backgrounds */
-  --ivory:      #FAF8F3; /* warm off-white — default page background */
-  --slate:      #5B6473; /* muted body text on light backgrounds */
-  --line:       #E4DECE; /* hairline dividers on light bg */
-  --white:      #FFFFFF;
-}
-```
-
-Rules:
-- Default page background is `--ivory`, NOT pure white (warmer = more premium).
-- Body text on light = `--ink` for headings, `--slate` for paragraphs.
-- Gold is an *accent only* — never large gold fills. Use it for: the word that carries meaning in a headline, thin rules, the diamond divider, hover states, and small labels.
-- Alternate section backgrounds: `--ivory` → dark (`--ink` / `--midnight`) → `--ivory` → `--champagne`, so the page has rhythm rather than one flat wash.
-
-### 2.2 Typography
-Load from Google Fonts.
-
-- **Display serif — `Fraunces`** (weights 400, 500, 600; opsz enabled). Used for: hero headline, all section titles, big pull-quotes. High-contrast, elegant, matches the logo's classical serif.
-- **Body sans — `Inter Tight`** (400, 500, 600). Used for: paragraphs, buttons, nav, most UI.
-- **Mono utility — `IBM Plex Mono`** (400, 500, uppercase, letter-spaced). Used for: eyebrow labels, section numbers, stat labels, the "STRATEGY. INSTALLED." kicker. **This is intentional** — the mono/"engineering" type against the serif/"prestige" type visually encodes the brand duality (strategy + execution). Do not swap it for another sans.
-
-Type scale (desktop; scale down ~30% on mobile):
-- Hero H1: Fraunces, clamp(3rem, 6vw, 5.75rem), weight 500, line-height 1.02, letter-spacing -0.01em.
-- Section title H2: Fraunces, clamp(2rem, 3.5vw, 3.25rem), weight 500.
-- H3 / card title: Fraunces 1.5rem weight 500, OR Inter Tight 600 for smaller UI titles.
-- Body: Inter Tight 1.0625rem, line-height 1.65, color `--slate`.
-- Eyebrow/label: IBM Plex Mono 0.75rem, uppercase, letter-spacing 0.18em, color `--gold`.
-
-### 2.3 The signature element
-The logo has a small **gold diamond** divider (◆). Make it the brand's recurring signal:
-- Use it as the bullet before every eyebrow label: `◆ STRATEGY. INSTALLED.`
-- Use it as the section divider between major blocks (a thin `--line` rule with a centered gold ◆).
-- On scroll into a section, animate the diamond drawing/rotating in (see Motion).
-
-### 2.4 Spacing & shape
-- Generous whitespace. Section vertical padding: clamp(5rem, 10vw, 9rem).
-- Max content width: 1200px, centered, with 24px side gutters (mobile) / larger on desktop.
-- Border radius: small and restrained — 4px on cards/buttons max. Luxury reads sharper, not bubbly.
-- Dividers are hairlines (1px `--line`), never heavy.
-
-### 2.5 Buttons
-- **Primary CTA:** solid `--ink` background, `--ivory` text, on hover fill shifts to `--midnight` and a thin gold underline sweeps in. Label: sentence case.
-- **Secondary CTA:** transparent with 1px `--ink` border, text `--ink`, hover border → gold.
-- **On dark sections:** primary becomes `--gold` bg with `--ink` text; secondary becomes gold outline.
-- All buttons: Inter Tight 500, 0.95rem, padding 14px 28px, 4px radius, transition 200ms.
+**Audience:** founders, CEOs, and commercial/operations leaders at ambitious companies — property, hospitality, education, distribution/FMCG, professional services, technology, and growth-stage businesses — who want systems installed, not decks delivered.
 
 ---
 
-## 3. Logo usage & the nav-visibility fix
+## 2. Design system
 
-**Assets needed (I will provide; build placeholders now):**
-- `[IMAGE PLACEHOLDER: logo-full-navy.svg]` — full horizontal lockup (VP monogram + "VANORA PARTNERS" + tagline), navy/gold on transparent. For light backgrounds.
-- `[IMAGE PLACEHOLDER: logo-full-white.svg]` — SAME lockup but wordmark reversed to ivory/white with gold monogram, for dark backgrounds and the transparent hero nav. **Flag this as a required reversed asset.**
-- `[IMAGE PLACEHOLDER: logo-icon-vp.svg]` — just the VP monogram, for the mobile nav, favicon, and small placements.
+Derive every color and font from `CLAUDE.md`'s tokens — do not introduce new ones here. Summary:
+- Navy (`--ink`/`--midnight`/`--navy-deep`), gold (`--gold`/`--gold-soft`), ivory/champagne/white backgrounds, slate body text, hairline `--line` dividers — all already defined.
+- `--cobalt` is new and restrained: small digital-interaction accents only (active nav underline, focus rings, a link hover, a data-viz line) — never a section background or large fill, never overtaking gold as the primary accent.
+- No violet.
+- Type: Fraunces (headlines/pull-quotes), Inter Tight (body/buttons/nav), IBM Plex Mono uppercase letter-spaced (eyebrows/labels/stats).
+- The gold ◆ diamond remains the signature motif: eyebrow bullet, section divider, process/pipeline progress fill, and now also the center of the rotating brand seal (Section 2 of the homepage, below).
 
-**THE MENU FIX (this is the reported problem — solve it explicitly):**
-The nav is currently invisible because dark text sits on a dark hero area. Fix with a **two-state sticky nav**:
+**Glassmorphism — used selectively, not everywhere:**
+- Sticky header (solid state can stay opaque per the nav-visibility rule; the transparent hero state may use a light glass treatment if it doesn't compromise contrast)
+- Hero micro-metric cards (Revenue Systems / AI Automation / Business Transformation)
+- Flagship AI solution cards
+- Revenue Leakage Assessment card
+- Selected floating elements (e.g. rotating brand seal backing)
 
-1. **Over the hero (top of page, transparent state):** nav background transparent. Use `logo-full-white.svg`. Nav links in `--ivory` (white). Link hover → `--gold-soft`. CTA button = gold.
-2. **On scroll (past ~80px, solid state):** nav background `--ivory` with a subtle bottom hairline (`--line`) and a soft shadow. Switch to `logo-full-navy.svg`. Nav links in `--ink`. Link hover → `--gold`. CTA button = solid `--ink`.
-3. Transition between states smoothly (background + color, 250ms). Never let navy text sit on navy background.
-4. **Mobile:** hamburger icon in `--ink` (solid state) / `--ivory` (over hero). Opens a full-screen `--ink` overlay menu with ivory links, gold hovers, and the `logo-icon-vp` at top.
-
-Nav items: `Approach` · `Services` · `Results` · `About` · **CTA button: "Book a strategy call"**
+Treatment: `backdrop-filter: blur(16px)`, thin low-opacity border (`--line` at reduced opacity or a light navy/gold hairline), soft realistic shadow, text contrast verified AA. Never apply glassmorphism to a full section background.
 
 ---
 
-## 4. Section-by-section build
+## 3. Header, navigation & the rotating brand seal
+
+**Nav rule (unchanged, still the #1 thing not to get wrong):** two-state sticky nav. Transparent/dark state over the hero uses `logo-full-white.png`, ivory links, gold-soft hover, gold CTA. Solid state (~80px scroll) uses `logo-full-navy.png` on an ivory bar with a hairline + soft shadow, ink links, gold hover, solid-ink CTA. Verify contrast in both states, every viewport.
+
+**Nav items:** `Home` · `Solutions` · `Industries` · `Vanora AI` · `How We Work` · `Insights` · `About` · `Contact`
+**Header CTA:** "Book a strategy session" (sentence case button, solid treatment per state).
+
+Not every nav item needs a dedicated page yet. Where there's no separate page, point the link at the matching homepage section anchor (e.g. `Vanora AI` → `#ai-solutions`, `How We Work` → `#how-it-works`). Do not break the existing anchor IDs from the old build without updating every link that pointed at them. `Insights` has no content yet — `[PLACEHOLDER]`: link it to a clearly labelled "coming soon" state or the About section until real content exists; do not fabricate blog posts.
+
+Mobile: hamburger in `--ink` (solid state) / `--ivory` (over hero), opening a full-screen `--ink` overlay with ivory links, gold hovers, `logo-icon-vp` at top — same pattern as the current build.
+
+---
+
+## 4. Homepage sections
 
 ### SECTION 1 — Hero
-**PURPOSE:** In 3 seconds, land the differentiator (strategy that gets *executed*) and drive the call. This is the "wow" moment.
+**PURPOSE:** Land the new positioning immediately, stay credible, drive the strategy-session CTA.
 
-**LAYOUT:** Full-viewport (min-height 92vh), dark. Background `--ink` with a very subtle radial gradient toward `--midnight` behind the headline, plus a faint large ◆ or architectural line motif in the corner at ~4% opacity. Left-aligned copy on desktop (asymmetric, more editorial than centered); centered on mobile. Copy occupies left 60%; right 40% reserved for the hero visual.
+**LAYOUT:** Full-width, ~760–900px min-height on desktop. Text left (Fraunces headline + Inter Tight body), executive meeting photo right with natural facial framing — no dark overlay, no text embedded in the image. Bright ivory-to-transparent gradient behind the text block for contrast. Below the fold of the two-column layout, three small glass micro-cards. Separate, simpler stacked composition on mobile (image first or text first — text first, so the message lands before the scroll).
 
 **COPY:**
 - Eyebrow (mono, gold): `◆ STRATEGY. INSTALLED.`
-- H1 (Fraunces): `Most firms hand you a strategy.`
-  then on a new line, larger emphasis with "install" in gold: `We install it.`
-  `[CHOOSE alt H1]` → `Strategy that doesn't stay on the slide.`
-- Subhead (Inter Tight, 1.25rem, ivory at 85%): `"Vanora Partners builds your growth strategy and stays to execute it — the systems, the revenue engine, the operating cadence. No orphaned decks. No theory. Just infrastructure that runs long after the engagement ends."`
-- Primary CTA: `Book a strategy call`
-- Secondary CTA (text link with gold arrow): `See how we work →`
-- Below CTAs, a thin mono credibility line (ivory 60%): `Strategy and execution for firms that need results, not slideware`
+- H1 (Fraunces): `"We build the systems behind predictable growth."`
+- Subhead (Inter Tight, slate/ivory-85% depending on background): `"Vanora combines strategy, AI, revenue systems, automation, talent and hands-on execution to help ambitious companies sell more, collect faster, operate better and scale intelligently."`
+- Primary CTA: `Book a strategy session`
+- Secondary CTA (text link, gold arrow): `Explore our solutions →`
+- Trust line (mono, muted): `Built for ambitious companies, founders and executive teams.`
 
-**IMAGE:** `[IMAGE PLACEHOLDER: hero-visual — 4:5 portrait, right side]` — intended: a poised, premium image (boardroom / architectural detail / abstract navy-gold texture / founder in conversation). Build it as a rounded-4px framed block with a thin gold 1px inner border and the placeholder label centered. On desktop it should overlap the section edge slightly for an editorial feel.
+**Micro-cards (glass, icon not invented numbers):**
+1. **Revenue Systems** — `Build predictable pipelines`
+2. **AI Automation** — `Remove repetitive work`
+3. **Business Transformation** — `Scale with stronger operations`
 
-**MOTION:**
-- On load: eyebrow fades up first (0ms), H1 lines stagger up (120ms apart), subhead fades (300ms), CTAs fade (450ms). Ease: cubic-bezier(0.22,1,0.36,1).
-- The word "install" gets a gold underline that draws left-to-right after the H1 settles.
-- Hero visual: subtle scale-in from 1.04 → 1.0 over 900ms.
-- Optional ambient: a faint ◆ slowly drifting/rotating in the background corner (respect `prefers-reduced-motion`).
+**IMAGE:** `assets/vanora-homepage-hero.png` (supplied — bright ivory boardroom, executive team around a table, presenter at a data screen). Set explicit width/height, `loading="eager"`/`fetchpriority="high"` since it's above the fold, descriptive alt text (e.g. "Vanora Partners executive team reviewing a revenue dashboard in a boardroom"). Protect the group's faces when cropping for mobile.
 
----
-
-### SECTION 2 — Trust / proof bar
-**PURPOSE:** Immediate credibility right under the fold.
-
-**LAYOUT:** Slim band, `--ivory` bg. Left: mono label `◆ TRUSTED TO DELIVER`. Right: a row of 4–6 client logo slots OR, if logos aren't ready, a row of 3 headline stats.
-
-**COPY (stat version — use if logos not ready):**
-- `4` — `business units transformed in a single engagement`
-- `90 days` — `to a live revenue roadmap, not a report`
-- `15+ yrs` — `operating experience behind every play`
-(Numbers in Fraunces gold-adjacent large; labels in mono slate. These are placeholders — confirm real numbers.)
-
-**IMAGE:** `[IMAGE PLACEHOLDER: client-logo-1 … client-logo-6]` — greyscale monochrome logo slots, evenly spaced, ~120px wide each.
-
-**MOTION:** Logos/stats fade+rise on scroll into view, staggered 80ms.
+**MOTION:** Same staggered entrance system as the current hero (eyebrow → H1 → subhead → CTAs, ~120ms stagger, cubic-bezier(0.22,1,0.36,1)). Micro-cards stagger in after CTAs. Image scale-in 1.04→1.0 over 900ms. Respect `prefers-reduced-motion`.
 
 ---
 
-### SECTION 3 — The tension (positioning statement)
-**PURPOSE:** Name the pain that makes buyers nod. Sets up why "installed" matters.
+### SECTION 2 — Rotating Vanora brand seal
+**PURPOSE:** A premium circular brand mark reinforcing the tagline without gimmick.
 
-**LAYOUT:** `--ivory`, generous margins, single centered column max-width 820px. Large editorial statement.
+**LAYOUT:** Positioned in the hero as a small supporting element — do not let it cover the headline, CTAs, or the photo's faces. On desktop it can sit near the image's edge or between the text block and the photo; on small mobile, simplify or omit rather than crowd the layout.
+
+**COPY (circular rotating text, mono, letter-spaced):**
+`STRATEGY INSTALLED • REVENUE ENGINEERED • GROWTH DELIVERED •` (repeats around the circle)
+**Center mark:** the existing `logo-icon-vp` monogram (do not fabricate a new mark).
+
+**MOTION:** Slow continuous rotation (SVG `<textPath>` or CSS animation, ~30–40s per revolution). Pauses or slows on hover/focus. Respects `prefers-reduced-motion` (static, no spin). Simplify sizing at small breakpoints so it never overlaps text.
+
+---
+
+### SECTION 3 — Industry / trust strip
+**PURPOSE:** Immediate credibility band under the hero.
+
+**LAYOUT:** Slim `--ivory` band. Left: mono eyebrow. Right: row of industry labels/icons.
 
 **COPY:**
-- Eyebrow: `◆ THE PROBLEM WITH MOST CONSULTING`
-- H2 (Fraunces): `"You've paid for strategy before. Then watched it sit in a folder."`
-- Body: `"Beautiful decks. Smart frameworks. And six months later, nothing has actually changed — because advice and execution are two different jobs, and most firms only do the first. Vanora does both. We stay in the room until the strategy is running in your business."`
+- Eyebrow: `◆ BUILT FOR AMBITIOUS ORGANISATIONS`
+- Industry labels (consistent icon set, e.g. Lucide): `Property and Real Estate` · `Hospitality` · `Education` · `Distribution and FMCG` · `Professional Services` · `Technology` · `Growth-Stage Businesses`
 
-**MOTION:** Text reveal on scroll (fade+rise). The word "nothing" or the sentence's key phrase can get a subtle gold highlight-sweep.
+No invented client logos here — text/icon labels only.
+
+**MOTION:** Fade + rise on scroll, staggered ~80ms per item.
 
 ---
 
-### SECTION 4 — What we do (Services)
-**PURPOSE:** Show the offer clearly, framed around *installation*, not advice.
+### SECTION 4 — Business problems ("Where growth breaks down")
+**PURPOSE:** Name the pain, set up the promise.
 
-**LAYOUT:** Dark section (`--ink`). Eyebrow + H2, then a 3-card grid (stack on mobile). Each card: mono index (01/02/03 — justified here, it's a real set), Fraunces title, short body, and a thin gold rule that extends on hover. Cards have `--midnight` bg, 1px subtle border, 4px radius.
+**LAYOUT:** `--ivory`. Eyebrow + H2 centered/left per existing tension-section pattern, then a 6-card grid (stack on mobile), consistent line icons.
 
 **COPY:**
-- Eyebrow: `◆ WHAT WE INSTALL`
-- H2: `"Strategy is the start. Execution is the point."`
-- Card 01 — **Growth & Revenue Strategy**
-  `"We map where the revenue actually is — segments, offers, pricing, and the path to it — and turn it into a plan your team can run, not just read."`
-- Card 02 — **Revenue Engine Build**
-  `"We install the machine: outbound systems, CRM and automation, funnels, and the operating cadence that turns the plan into pipeline and closed deals."`
-- Card 03 — **Execution & Enablement**
-  `"We stay in the build. Systems configured, teams trained, dashboards live — handed over only when it runs without us."`
-- Under the grid, a text link: `Explore the full engagement →`
+- Eyebrow: `◆ WHERE GROWTH BREAKS DOWN`
+- H2 (Fraunces): `"Growth should not feel this difficult."`
+- Body: `"Your business may have a strong product, an experienced team and ambitious targets — but without a connected revenue system, valuable opportunities continue to slip away."`
+- Six problem cards (icon + short line each):
+  1. `Leads are not followed up`
+  2. `Proposals take too long`
+  3. `Executives are overwhelmed`
+  4. `Invoices remain unpaid`
+  5. `Customers quietly disappear`
+  6. `Sales performance is difficult to measure`
 
-**IMAGE:** none required; keep it typographic. Optionally `[IMAGE PLACEHOLDER: service-detail — 16:9]` if a supporting visual is wanted later.
-
-**MOTION:** Cards stagger-reveal on scroll. On hover: card lifts 4px, gold rule under the title animates from 0 → full width, index number brightens to gold.
+**MOTION:** Cards stagger-reveal on scroll, restrained (fade + rise, no bounce).
 
 ---
 
-### SECTION 5 — How we work (Process)
-**PURPOSE:** Make the "installed" promise concrete and reduce risk. This IS a real sequence, so numbered steps are correct here.
+### SECTION 5 — Vanora promise ("What Vanora installs")
+**PURPOSE:** State the offer as installed systems, not advice.
 
-**LAYOUT:** `--ivory`. Vertical timeline OR 4-across step row (stack on mobile). A gold connector line runs through the steps and "fills" as you scroll (progress motif = "installing").
+**LAYOUT:** Split layout, `--ivory` or `--champagne` background. Image left or right (alternate rhythm from Section 4), copy + outcome list opposite.
 
 **COPY:**
-- Eyebrow: `◆ HOW AN ENGAGEMENT RUNS`
-- H2: `"A clear path from decision to done."`
-- Step 01 — **Diagnose** — `"We audit where growth is leaking and where it's hiding. You get a picture of reality, fast."`
-- Step 02 — **Design** — `"We build the strategy and the roadmap — sequenced, costed, and owned by named people."`
-- Step 03 — **Install** — `"We stand up the systems and engines. Configured, integrated, tested, live."`
-- Step 04 — **Handover** — `"Your team runs it. We document, train, and step back — leaving a machine, not a dependency."`
+- Eyebrow: `◆ WHAT VANORA INSTALLS`
+- H2 (Fraunces): `"We turn business chaos into connected growth systems."`
+- Body: `"Vanora designs and implements practical systems that connect your people, processes, data and technology. We do not leave recommendations inside presentations. We build, deploy and optimise solutions your team can actually use."`
+- Outcome points (gold ◆ ticks): `Generate qualified opportunities` · `Convert more prospects` · `Automate repetitive work` · `Improve executive decision-making` · `Recover outstanding revenue` · `Retain valuable customers` · `Enter new markets` · `Build scalable operations`
+- CTA: `Discover the Vanora difference`
 
-**MOTION:** The gold connector line fills top-to-bottom (or left-to-right) tied to scroll position — a literal "installation progress bar." Each step's ◆ node lights gold as the line reaches it. Respect reduced-motion (show fully filled).
+**IMAGE:** `assets/vanora-strategy-installed.png` (supplied — city-view boardroom, presenter at a funnel/bar-chart dashboard). Lazy-load, explicit dimensions, descriptive alt text.
+
+**MOTION:** Standard reveal; image parallax-shifts slightly slower than text on scroll (subtle, existing pattern from the old About section).
 
 ---
 
-### SECTION 6 — Proof / Results (case studies)
-**PURPOSE:** Evidence. This is where trust is won.
+### SECTION 6 — Challenge-based solution selector
+**PURPOSE:** Let the visitor self-select their problem and see the matching solution — this is interactive, so build it as real tabs/cards, not hover-only.
 
-**LAYOUT:** Dark (`--midnight`). Eyebrow + H2, then 2–3 case cards. Each: image, mono client/sector label, a one-line result headline (Fraunces), 2-sentence body, and a gold stat.
+**LAYOUT:** `--ivory` or `--white`. Headline, then a row/grid of selectable challenge cards or tabs. Selecting one reveals a panel below with the recommended solution, a short explanation, benefits, and a CTA. Must work via click, keyboard (arrow keys / Enter / Space, proper `role="tablist"`/`role="tab"`/`role="tabpanel"` or an accessible disclosure pattern), and touch. No information available only on `:hover`.
 
 **COPY:**
-- Eyebrow: `◆ IN PRACTICE`
-- H2: `"Engagements that left something running."`
-- Case 1 label: `MULTI-UNIT GROUP · TRANSFORMATION`
-  Headline: `"Four business units, one revenue system."`
-  Body: `"A 90-day roadmap plus live digital and revenue infrastructure across every unit — delivered, not just recommended."`
-  Stat: `90-DAY roadmap, live`
-- Case 2 & 3: `[PLACEHOLDER — supply real client results; keep same structure]`
+- H2: `"What would you like to improve?"`
+- Challenge options: `Generate qualified leads` · `Automate sales and customer service` · `Recover outstanding revenue` · `Improve executive productivity` · `Recruit a high-performing team` · `Enter a new market` · `Launch or scale a company` · `Transform business operations`
+- Each panel: recommended Vanora solution name + one short explanation paragraph + 2–3 benefit bullets + CTA button (`Book a strategy session` or a solution-specific CTA where it maps directly to a Section 7 AI product).
 
-**IMAGE:** `[IMAGE PLACEHOLDER: case-1-image, case-2-image, case-3-image — 3:2 each]` — framed with thin gold border, subtle zoom on hover.
+Map each challenge to the closest real solution described elsewhere on the page (Section 5 outcomes, Section 7 AI products, Section 8 revenue engine) rather than inventing new named products here.
 
-**MOTION:** Cards reveal on scroll; stat numbers count up when in view.
+**MOTION:** Smooth panel/tab transition (~200–250ms crossfade or height animation), no layout jump. Provide a static fallback (first panel visible by default) so content works without JS reveal.
 
 ---
 
-### SECTION 7 — Why Vanora ("Strategy. Installed." explainer)
-**PURPOSE:** Drive the differentiator home with a simple visual contrast.
+### SECTION 7 — Flagship AI solutions ("Vanora AI")
+**PURPOSE:** Show AI producing business results, not just talking.
 
-**LAYOUT:** `--champagne` (pale gold) bg. Two-column contrast: left "Typical firms" (muted slate, plain), right "Vanora" (navy, confident, gold ◆ ticks). A vertical gold rule between them.
+**LAYOUT:** Alternate background (`--ivory` or dark `--ink`/`--midnight` for contrast with Section 6). Eyebrow + H2, then a 6-card glassmorphism grid (2–3 columns desktop, stack mobile).
 
 **COPY:**
-- Eyebrow: `◆ THE DIFFERENCE`
-- H2: `"Advice ends at the recommendation. We don't."`
-- Left column "MOST FIRMS": `Deliver a deck` · `Bill by the hour` · `Hand off and leave` · `Success = report submitted`
-- Right column "VANORA PARTNERS" (gold ◆ ticks): `Deliver a working system` · `Commit to outcomes` · `Stay until it runs` · `Success = it works without us`
+- Eyebrow: `◆ VANORA AI`
+- H2 (Fraunces): `"AI that does more than talk. It produces business results."`
+- Cards (icon + name + body + directional arrow + CTA, no fake stats or screenshots):
+  1. **ExecutiveOS AI** — `"An AI-powered executive command centre that turns meetings, emails, commitments and business information into decision-ready intelligence."`
+  2. **CashFlow Recovery AI** — `"Identifies overdue accounts, prioritises collection activity and automates personalised payment follow-up."`
+  3. **TenderPilot AI** — `"Helps businesses discover relevant tenders, assess requirements and prepare stronger first-draft bid responses."`
+  4. **ProposalForge AI** — `"Turns a short sales brief into professional proposals, quotations, scopes of work and follow-up communication."`
+  5. **RenewalGuard AI** — `"Tracks renewal dates, identifies at-risk accounts and triggers timely retention actions."`
+  6. **AI Voice and WhatsApp Automation** — `"Automates customer conversations, qualification, booking, follow-up and support across high-volume channels."`
 
-**MOTION:** Right column ticks draw in one by one on scroll.
+**MOTION:** Stagger-reveal; on hover/focus, subtle gradient-glow + 4px lift + gold rule sweep (existing card-hover pattern), directional arrow nudges right.
 
 ---
 
-### SECTION 8 — About
-**PURPOSE:** Establish the firm's weight and lineage.
+### SECTION 8 — Vanora Revenue Engine
+**PURPOSE:** Show the connected system, not a pile of services.
 
-**LAYOUT:** `--ivory`. Two columns: left text, right image placeholder (or founder/team).
+**LAYOUT:** Strong split layout, bright background, branded pipeline visual (not a stock image — build it in CSS/SVG using the design tokens).
 
 **COPY:**
-- Eyebrow: `◆ ABOUT`
-- H2: `"Strategy Beyond Expectations."` (this is where the logo tagline lives)
-- Body: `"Vanora Partners is a strategy and execution firm working with founders and growth leaders across Nigeria, the US, the UK, and Canada. We bring 15+ years of building revenue systems, automation, and go-to-market infrastructure to firms that need results, not slideware. Where others theorize, we build."`
-- Small link: `See our approach →` (anchors to the Process section)
+- Eyebrow: `◆ VANORA REVENUE ENGINE`
+- H2 (Fraunces): `"Stop chasing revenue. Build a system that produces it."`
+- Body: `"We connect market intelligence, lead generation, sales automation, CRM implementation, conversion strategy, customer retention and performance reporting into one measurable revenue system."`
+- Pipeline stages: `Market Intelligence → Qualified Leads → Meetings → Proposals → Customers → Renewals`
+- CTA: `Build my revenue engine`
 
-**IMAGE:** `[IMAGE PLACEHOLDER: about-visual — 4:5]` — team, founder, or a refined architectural/office image.
-
-**MOTION:** Standard reveal; image parallax-shifts slightly slower than text on scroll (subtle).
-
----
-
-### SECTION 9 — Testimonials
-**PURPOSE:** Human proof.
-
-**LAYOUT:** Dark (`--ink`). A single large pull-quote (Fraunces, gold quotation ◆), or a 3-slide carousel. Attribution in mono.
-
-**COPY:** `[IMAGE/TEXT PLACEHOLDER: supply 1–3 real client quotes]`. Build with one dummy structured quote:
-- Quote: `"They didn't just tell us what to do. They built it with us and it's still running."`
-- Attribution: `— [NAME], [TITLE], [COMPANY]`
-- `[IMAGE PLACEHOLDER: testimonial-avatar — 64px circle]`
-
-**MOTION:** Quote fades/crossfades if carousel; gold ◆ marks active slide.
+**MOTION:** Scroll-linked progress fill along the pipeline (reuse the existing "installation progress" gold-line pattern from the old Process section). Fully filled/static state when `prefers-reduced-motion` is set.
 
 ---
 
-### SECTION 10 — Final CTA
+### SECTION 9 — Sector solutions
+**PURPOSE:** Show relevance across industries without a generic template feel.
+
+**LAYOUT:** Image-based card grid, one distinct photo per sector (no repeats — do not reuse the same meeting image twice). Card reveals a short sector-specific line on hover, focus, or tap, with a non-hover fallback so the content is always available (e.g. visible on mobile by default, or a `<details>`-style disclosure).
+
+**COPY:**
+- H2: `"Every industry loses revenue differently."`
+- Sectors: `Property and Real Estate` · `Hospitality` · `Education` · `Distribution and FMCG` · `Professional Services` · `Technology and Digital Businesses`
+
+**IMAGE:** `[IMAGE PLACEHOLDER: one photo per sector, 6 total]` — none of the 4 supplied images are sector-specific; do not reuse the hero/about/training photos here. Flag to the owner as still needed.
+
+**MOTION:** Reveal on scroll; hover/focus reveal is a gentle crossfade or lift, not jarring.
+
+---
+
+### SECTION 10 — Why Vanora
+**PURPOSE:** Drive the differentiator home.
+
+**LAYOUT:** `--champagne` background. Five reason blocks, then a two-column comparison (existing "Typical firms vs. Vanora" visual pattern from the old build, relabelled).
+
+**COPY:**
+- H2: `"Why ambitious companies choose Vanora"`
+- Reasons:
+  1. **Built Around Revenue** — `"Every solution is connected to a measurable business outcome."`
+  2. **AI With a Business Purpose** — `"We use AI to improve speed, productivity, customer experience and profitability."`
+  3. **Strategy Plus Execution** — `"We help design, build, deploy and manage the solution."`
+  4. **Solutions That Scale** — `"Our systems grow with your customers, team and objectives."`
+  5. **One Connected Growth Partner** — `"Strategy, technology, talent, automation and execution under one partnership."`
+- Comparison — **Traditional Consulting:** `Recommendations` · `Presentations` · `Handover` · `Limited implementation`
+- Comparison — **Vanora Partners** (gold ◆ ticks): `Diagnosis` · `System design` · `Implementation` · `Team enablement` · `Continuous optimisation`
+
+**MOTION:** Right-column ticks draw in one by one on scroll (existing pattern).
+
+---
+
+### SECTION 11 — How Vanora works
+**PURPOSE:** Make the process concrete.
+
+**LAYOUT:** `--ivory`. Scroll-linked progress line through 5 steps (reuse existing process-line component, extended from 4 to 5 steps).
+
+**COPY:**
+- H2: `"From business problem to working growth system"`
+- `01 — DIAGNOSE` — `"Identify revenue leaks, operational bottlenecks and growth opportunities."`
+- `02 — DESIGN` — `"Create the right combination of strategy, technology, automation and expertise."`
+- `03 — DEPLOY` — `"Build and integrate the solution into existing operations."`
+- `04 — ENABLE` — `"Train the team and establish ownership, workflows and performance standards."`
+- `05 — OPTIMISE` — `"Monitor results, improve performance and scale what works."`
+
+**MOTION:** Gold connector line fills tied to scroll position; each step's ◆ node lights gold as the line reaches it. Fully filled/static under reduced motion.
+
+---
+
+### SECTION 12 — Measurable outcomes
+**PURPOSE:** Signal accountability without fabricating numbers.
+
+**LAYOUT:** Dark section (`--midnight` or `--ink`) for contrast with Section 11. Card/list grid of outcome *categories* — no numbers unless the owner confirms them.
+
+**COPY:**
+- Eyebrow: `◆ RESULTS YOU CAN SEE`
+- H2: `"Every engagement starts with a measurable business outcome."`
+- Outcome categories (labels only, `[PLACEHOLDER]` for any number): `Qualified opportunities generated` · `Meetings booked` · `Proposal turnaround time` · `Sales conversion rate` · `Outstanding revenue recovered` · `Customer renewal rate` · `Administrative hours saved` · `Cost per acquisition` · `Revenue generated`
+- Supporting line: `"No vague promises. No activity without accountability. Every engagement begins with clear objectives and measurable success indicators."`
+
+**MOTION:** Reveal on scroll only — no count-up here since there are no real numbers yet. Add count-up once the owner supplies confirmed figures.
+
+---
+
+### SECTION 13 — Revenue Leakage Assessment
+**PURPOSE:** Primary lead-generation moment.
+
+**LAYOUT:** Visually distinct card, glassmorphism treatment, `--champagne` or `--ivory` background.
+
+**COPY:**
+- H2: `"How much revenue is your business losing?"`
+- Body: `"Take the Vanora Revenue Leakage Assessment to identify breakdowns in lead management, sales follow-up, proposals, collections, renewals and operational workflows."`
+- Benefits: `Identify major revenue-leakage points` · `Discover automation opportunities` · `Receive immediate growth recommendations` · `Get a customised revenue-system roadmap`
+- CTA: `Start my revenue assessment`
+
+**Form (frontend only — build the multi-step UI now, do not invent a submission endpoint):**
+Fields: Name · Work email · Phone number · Company · Role · Company size · Primary business challenge · Current sales process · Main source of leads · Follow-up process · Outstanding invoice challenge · Desired outcome.
+
+`[PLACEHOLDER]`: no backend/API exists yet. Wire the form to validate and show a "thanks, we'll be in touch" state on the client, clearly commented in the code (`// TODO: connect to real form handler — see CLAUDE.md Assets`) so it's obvious nothing is silently failing or fake-succeeding against a real endpoint. Do not point it at a fabricated URL.
+
+**MOTION:** Standard reveal; multi-step transitions ~200ms, focus moves to the next step's first field for accessibility.
+
+---
+
+### SECTION 14 — About and leadership preview
+**PURPOSE:** Establish the firm's weight, connected to execution.
+
+**LAYOUT:** `--ivory`. Two columns: text left, image right (or alternate from Section 5's image side for rhythm).
+
+**COPY:**
+- H2: `"A growth partner built for execution."`
+- Body: `"Vanora brings together commercial strategy, AI, automation, talent and practical implementation to help organisations turn ambitious objectives into working systems and measurable progress."`
+- Secondary line (logo tagline, lives here per CLAUDE.md rule): `"Strategy Beyond Expectations."`
+- CTA: `Meet Vanora Partners`
+
+**IMAGE:** `assets/vanora-executive-advisory.png` (supplied — close conversation shot, bright window backdrop, dashboard screen).
+
+No invented leadership names, titles, or bios — `[PLACEHOLDER]` if/when the owner supplies them.
+
+**MOTION:** Standard reveal; image parallax-shifts slightly slower than text (existing pattern).
+
+---
+
+### SECTION 15 — Corporate training
+**PURPOSE:** Show the talent-enablement side of the offer.
+
+**LAYOUT:** Split layout, alternate background from Section 14.
+
+**COPY:**
+- H2: `"Build teams that can work, sell and lead in the AI era."`
+- Body: `"Vanora equips executives, commercial teams and operational leaders with practical AI, revenue and digital capabilities they can apply immediately."`
+- CTA: `Explore corporate programmes`
+
+**IMAGE:** `assets/vanora-revenue-growth-training.png` (supplied — presenter with funnel/pie-chart dashboard, small group).
+
+**MOTION:** Standard scroll reveal.
+
+---
+
+### SECTION 16 — Final CTA
 **PURPOSE:** Convert. The strongest close on the page.
 
-**LAYOUT:** Full-width dark band (`--navy-deep`) with a faint gold ◆ watermark. Centered.
+**LAYOUT:** Full-width `--navy-deep` band, faint gold ◆ watermark, restrained glass details. Centered.
 
 **COPY:**
-- Eyebrow: `◆ START HERE`
-- H2 (Fraunces, large): `"Ready to install a strategy that actually runs?"`
-- Sub: `"Book a 30-minute strategy call. We'll map your fastest path to results — no pitch, just a plan."`
-- Primary CTA (gold): `Book a strategy call`
-- Under it, mono: `Or email hello@vanorapartners.com`
+- Eyebrow: `◆ YOUR NEXT GROWTH MILESTONE`
+- H2 (Fraunces, large): `"Your next level of growth will require a better system."`
+- Body: `"Vanora brings strategy, AI, automation, talent and execution together to help your business sell more, collect faster and scale intelligently."`
+- Buttons: `Book a strategy session` (primary, gold) · `Speak with a growth partner` (secondary, gold outline)
 
-**MOTION:** ◆ watermark drifts slowly; CTA has a soft gold glow on hover.
+**MOTION:** ◆ watermark drifts slowly; CTA has a soft gold glow on hover/focus. Static under reduced motion.
 
 ---
 
-### SECTION 11 — Footer
-**LAYOUT:** `--navy-deep`. Columns: logo + tagline | quick links | contact.
+### SECTION 17 — Footer
+**LAYOUT:** `--navy-deep`. Columns: logo + description | solution links | industry links | company links | contact.
 
 **COPY:**
-- `logo-full-white.svg` + under it: `Strategy Beyond Expectations`
-- Links: `Approach · Services · Results · About · Book a call`
-- Contact: `hello@vanorapartners.com` + `[social placeholders: LinkedIn, X]`
-- Bottom bar (mono, ivory 50%): `© 2026 Vanora Partners. All rights reserved.`
+- `logo-full-white.png` + under it: `Strategy Beyond Expectations`
+- Description: `"Vanora Partners is an AI-powered revenue growth and business transformation company helping organisations generate opportunities, automate operations, improve decision-making and build predictable growth systems."`
+- Solution links: anchor to Section 7 AI products.
+- Industry links: anchor to Section 9 sectors.
+- Company links: `About` · `How We Work` · `Insights` · `Contact` · `Book a strategy session`
+- Contact: reuse whatever contact info/social links exist in the current footer build — do not invent a phone number, address, or social handle that isn't already verified in the repo.
+- Legal: `Privacy Policy` · `Terms` (link to existing pages if present, else `[PLACEHOLDER]`)
+- Bottom bar (mono, ivory 50%): `© {current year} Vanora Partners. All rights reserved.` — compute the year dynamically, don't hardcode it.
+
+**MOTION:** None beyond standard link hovers — footers don't need scroll reveal drama.
 
 ---
 
 ## 5. Global motion & interaction spec
-- **Scroll reveals:** default is fade + 16px rise, 600ms, cubic-bezier(0.22,1,0.36,1), triggered at ~15% in view, once. Use IntersectionObserver, not scroll listeners.
-- **Stagger** grouped items 80–120ms.
-- **The ◆ diamond** is the connective motion motif — it draws/rotates in on section entry and marks progress in the process section.
-- **Hovers:** gold underline sweeps, 4px lifts, gold border transitions — all 200ms.
-- **Count-up** stats when in view.
-- **`prefers-reduced-motion: reduce`** → disable all transforms/animations; show final states. This is required, not optional.
-- Keep it disciplined: motion should feel *installed and deliberate*, never busy. When in doubt, remove one animation (Chanel rule).
+Same discipline as `CLAUDE.md`: fade + 16px rise, ~600ms, cubic-bezier(0.22,1,0.36,1), IntersectionObserver (not scroll listeners), triggered once at ~15% in view, staggered 80–120ms within groups. New additions for this repositioning:
+- Rotating brand seal (Section 2): continuous slow rotation, pauses on hover/focus, static under reduced motion.
+- Pipeline scroll-fill (Section 8) and process-line scroll-fill (Section 11): tied to scroll position, fully filled as a static state under reduced motion.
+- Challenge-selector tab/panel transitions (Section 6): ~200–250ms, no layout jump.
+- Count-up stats: reserved for Section 12 once real numbers exist — do not count up placeholder/zero values.
+`prefers-reduced-motion: reduce` disables all transforms/animations and shows final states — required, not optional, across every new section.
 
 ## 6. Technical build instructions
-- **Stack:** [CHOOSE] Astro (preferred — fast, static, SEO-clean) OR a single well-structured `index.html` + `styles.css` + `main.js` if keeping it simple to deploy on the current host. Do not pull in a heavy framework unless there's a reason.
-- **Fonts:** Google Fonts via `<link>` with `display=swap`; preconnect.
-- **Structure:** semantic HTML5 (`<nav> <header> <section> <footer>`), one section per block above, each with an `id` matching nav anchors (`#approach #services #results #about`).
-- **Images:** every placeholder is a component/partial with a labelled `<div class="placeholder">` (aspect-ratio boxes, mono label centered, thin gold border). Wire real `<img>` with `loading="lazy"`, width/height, and `alt`. Swapping placeholder → real image must be trivial.
-- **Accessibility (quality floor, non-negotiable):** visible keyboard focus states (gold ring), color contrast AA on all text (this is what fixes the nav problem — verify nav link contrast in BOTH states), alt text on all images, aria-labels on icon buttons, reduced-motion respected.
-- **Responsive:** mobile-first; verify 360px, 768px, 1280px. Nav collapses to hamburger < 900px.
-- **Performance:** no layout shift; defer JS; lazy-load below-fold images.
+- **Stack:** vanilla HTML/CSS/JS, same as the current build (`index.html` + `styles.css` + `main.js`) — no framework migration as part of this repositioning.
+- **Fonts:** unchanged — Google Fonts `<link>` with `display=swap`, preconnect.
+- **Structure:** semantic HTML5, one section per block above, `id`s matching nav anchors. Update anchor IDs to match the new section list; grep for old anchors (`#approach #services #results`) before removing them so nothing silently 404s.
+- **Images:** the 4 supplied images live in `assets/` (`vanora-homepage-hero.png`, `vanora-strategy-installed.png`, `vanora-executive-advisory.png`, `vanora-revenue-growth-training.png`) plus existing logo files. Every other image reference is a labelled placeholder (aspect-ratio box, mono label, thin gold border) until supplied — most notably the 6 sector-solution photos (Section 9). `loading="lazy"` + explicit width/height on everything below the fold; hero image prioritized.
+- **Icons:** one consistent library, Lucide preferred if straightforward to add without a heavy dependency (inline SVG is fine too) — don't mix icon styles.
+- **Accessibility:** unchanged quality floor from `CLAUDE.md` — gold focus ring, AA contrast, alt text, aria-labels on icon buttons, reduced-motion respected, plus: the solution selector (Section 6) and sector cards (Section 9) must be fully keyboard- and touch-operable with no hover-only information, 44px minimum touch targets, logical tab order.
+- **Responsive:** verify at 1440 / 1280 / 1024 / 768 / 430 / 390 / 360px. Nav collapses to hamburger < 900px (unchanged).
+- **Performance:** no layout shift, defer JS, lazy-load below-fold media, avoid large background images where CSS/SVG can do the job (the revenue-engine pipeline and brand seal should be CSS/SVG, not exported images).
 - **SEO meta:**
-  - `<title>Vanora Partners — Strategy. Installed.</title>`
-  - meta description: `Vanora Partners is the strategy and execution firm that builds your growth systems and stays until they run.`
-  - Open Graph title/description/image (`[IMAGE PLACEHOLDER: og-image 1200x630]`), favicon = `logo-icon-vp`.
+  - `<title>Vanora Partners | AI-Powered Revenue Growth & Business Transformation</title>`
+  - meta description: `"Vanora Partners builds AI-powered revenue, automation and business transformation systems that help ambitious companies sell more, collect faster and scale intelligently."`
+  - Open Graph + Twitter/X metadata, canonical URL, Organization structured data (name, logo, same-as social links already verified in the footer — nothing fabricated), Service structured data for the Section 7 AI products described in plain terms (no unverifiable claims).
 
-## 7. Deliverables checklist for Claude Code
-- [ ] Two-state sticky nav with the visibility fix, tested in both states + mobile.
-- [ ] All 11 sections built with the verbatim copy above.
-- [ ] Design tokens (color/type/spacing) centralized in CSS variables.
-- [ ] All image placeholders in place and labelled, easy to swap.
-- [ ] Motion system implemented with reduced-motion fallback.
-- [ ] Responsive at 360 / 768 / 1280.
-- [ ] Accessibility pass (focus, contrast, alt, aria).
-- [ ] SEO meta + favicon + OG.
-- [ ] README noting which real assets the owner must supply (reversed white logo, hero image, case images, client logos, testimonials, real stats).
+## 7. Deliverables checklist
+- [ ] `CLAUDE.md` updated for repositioning — **done**.
+- [ ] This brief rewritten for the 17-section structure — **done**.
+- [ ] Design tokens updated (sampled navy, cobalt accent, no violet) in `styles.css`.
+- [ ] Nav items + header CTA updated; two-state contrast re-verified.
+- [ ] Rotating brand seal built and wired into the hero.
+- [ ] All 17 sections built with the verbatim copy above, one at a time, checked in with the owner at the hero before continuing.
+- [ ] Challenge-based solution selector fully accessible (keyboard, touch, no hover-only content).
+- [ ] Revenue Leakage Assessment form built frontend-only, clearly marked as unconnected to a real endpoint.
+- [ ] Sector-solution photography flagged as still needed (6 images).
+- [ ] Responsive at 1440/1280/1024/768/430/390/360.
+- [ ] Accessibility pass (focus, contrast, alt, aria, keyboard, touch targets).
+- [ ] SEO meta + structured data updated for the new positioning.
+- [ ] No TechBots references, no fabricated stats/testimonials/leadership bios, no invented endpoints.
 
 ---
 
-## 8. Assets I (owner) will provide — flagged for me
-1. `logo-full-white.svg` (reversed logo for dark backgrounds) — **required for nav fix.**
-2. Hero visual (4:5).
-3. 3 case-study images (3:2) + real results copy.
-4. Client logos (or confirm the stat-bar version).
-5. 1–3 testimonials with names/titles.
-6. About/team image (4:5).
-7. Confirm the 3 hero stat numbers are accurate.
+## 8. Assets status
+
+**Supplied (in `/assets`):** `logo-full-navy.png`, `logo-full-white.png`, `logo-icon-vp-navy.png`, `logo-icon-vp-white.png`, `vanora-homepage-hero.png`, `vanora-strategy-installed.png`, `vanora-executive-advisory.png`, `vanora-revenue-growth-training.png`.
+
+**Still needed from the owner:**
+1. 6 sector-specific photos (Property, Hospitality, Education, Distribution/FMCG, Professional Services, Technology) — one distinct image per sector, no repeats of the 4 boardroom images above.
+2. Confirmed stat numbers for Measurable Outcomes (Section 12) — currently category labels only, no numbers.
+3. A real backend/API endpoint for the Revenue Leakage Assessment form (Section 13) — frontend will be built and clearly marked as unconnected until this exists.
+4. Leadership names/titles/bios, if a leadership preview grid (beyond the current About copy) is wanted in Section 14.
+5. Confirmation of existing footer contact info and social links to carry forward unchanged (no new ones invented).
