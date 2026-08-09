@@ -790,6 +790,12 @@ h1, h2, h3, p { margin: 0; }
   font-weight: 500;
   font-size: 1.1rem;
   color: var(--ink);
+  transition: transform var(--duration-hover) ease, border-color var(--duration-hover) ease, box-shadow var(--duration-hover) ease;
+}
+.problem-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 16px 40px -26px rgba(4, 27, 68, 0.35);
 }
 
 /* ==========================================================================
@@ -1370,6 +1376,11 @@ h1, h2, h3, p { margin: 0; }
   background: var(--ivory);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  transition: transform var(--duration-hover) ease, border-color var(--duration-hover) ease;
+}
+.reason-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
 }
 .reason-card h3 {
   font-family: var(--font-display);
@@ -1524,6 +1535,11 @@ h1, h2, h3, p { margin: 0; }
   background: var(--midnight);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
+  transition: transform var(--duration-hover) ease, border-color var(--duration-hover) ease;
+}
+.outcome-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
 }
 .outcome-card__value {
   font-family: var(--font-display);
@@ -2062,7 +2078,10 @@ h1, h2, h3, p { margin: 0; }
   }
   .selector__tabs [role="tab"],
   .sector-card,
-  .ai-card {
+  .ai-card,
+  .problem-card,
+  .reason-card,
+  .outcome-card {
     transition: none;
   }
   html { scroll-behavior: auto; }
