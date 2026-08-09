@@ -30,12 +30,23 @@
 
       <!-- Insights has no real content yet, so it points at About per the brief's
            own instruction (vanora-partners-website-brief.md §3) until a real
-           Insights destination exists. -->
+           Insights destination exists. Solutions/Vanora AI/Revenue Engine are
+           consolidated under one "Solutions" dropdown so the top-level nav
+           stays at 7 flat items instead of wrapping onto two lines. -->
       <ul class="nav__links">
         <li><a href="#top">Home</a></li>
-        <li><a href="#solutions-selector">Solutions</a></li>
+        <li class="nav__dropdown">
+          <button type="button" class="nav__dropdown-trigger" aria-expanded="false" aria-controls="solutionsDropdown">
+            Solutions
+            <svg class="nav__dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <ul class="nav__dropdown-menu" id="solutionsDropdown">
+            <li><a href="#solutions-selector">Find your solution</a></li>
+            <li><a href="#ai-solutions">Vanora AI</a></li>
+            <li><a href="#revenue-engine">Revenue Engine</a></li>
+          </ul>
+        </li>
         <li><a href="#sectors">Industries</a></li>
-        <li><a href="#ai-solutions">Vanora AI</a></li>
         <li><a href="#approach">How We Work</a></li>
         <li><a href="#about">Insights</a></li>
         <li><a href="#about">About</a></li>
@@ -57,8 +68,9 @@
     <nav class="mobile-menu__links" aria-label="Mobile navigation">
       <a href="#top">Home</a>
       <a href="#solutions-selector">Solutions</a>
+      <a href="#ai-solutions" class="mobile-menu__sublink">Vanora AI</a>
+      <a href="#revenue-engine" class="mobile-menu__sublink">Revenue Engine</a>
       <a href="#sectors">Industries</a>
-      <a href="#ai-solutions">Vanora AI</a>
       <a href="#approach">How We Work</a>
       <a href="#about">Insights</a>
       <a href="#about">About</a>
@@ -641,7 +653,7 @@
             <div class="form-row form-row--checkbox">
               <label>
                 <input type="checkbox" name="consent" required>
-                I agree to be contacted by Vanora Partners about this assessment and consent to my information being processed in line with the <a href="#privacy-policy">Privacy Policy</a>.
+                I agree to be contacted by Vanora Partners about this assessment and consent to my information being processed in line with the <a href="https://vanorapartners.com/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
               </label>
             </div>
             <div class="assessment__step-actions">
@@ -776,19 +788,16 @@
     </div>
 
     <div class="site-footer__bottom">
-      <p>&copy; <span id="footerYear">2026</span> Vanora Partners. All rights reserved. &middot; <a href="#privacy-policy">Privacy Policy</a> &middot; <a href="#privacy-policy">Terms</a></p>
+      <p>&copy; <span id="footerYear">2026</span> Vanora Partners. All rights reserved. &middot; <a href="https://vanorapartners.com/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> &middot; <a href="#terms-placeholder">Terms</a></p>
     </div>
   </footer>
 
-  <!-- Neither a Privacy Policy nor Terms page exists yet in this repo — the v1
-       footer had no such links either, so this is genuinely new, not a reuse of
-       an existing page. Both links above point at the placeholder note below
-       rather than a fabricated URL. This is a real gap to close before the
-       Revenue Leakage Assessment's consent checkbox goes live — a required
-       consent checkbox referencing a policy that doesn't exist is a compliance
-       gap, not something markup can paper over. -->
-  <div id="privacy-policy" class="placeholder" style="margin:2rem auto;max-width:var(--content-width);padding:2rem;">
-    <p class="placeholder__label">PRIVACY POLICY &amp; TERMS — PLACEHOLDER<br>Supply real policy pages before the assessment form or footer links go live.</p>
+  <!-- Terms page doesn't exist yet — Privacy Policy is now real
+       (https://vanorapartners.com/privacy-policy.html), supplied by the
+       owner. Terms still points at this placeholder note until a real page
+       exists; swap the href above once it does. -->
+  <div id="terms-placeholder" class="placeholder" style="margin:2rem auto;max-width:var(--content-width);padding:2rem;">
+    <p class="placeholder__label">TERMS — PLACEHOLDER<br>Supply a real Terms page; swap the footer link's href once it exists.</p>
   </div>
 
   <script src="main.js"></script>
