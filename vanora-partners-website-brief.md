@@ -299,17 +299,24 @@ Each card CTA: `Explore solutions` — link to the closest matching content (Sec
 ---
 
 ### SECTION 12 — Measurable outcomes
-**PURPOSE:** Signal accountability without fabricating numbers.
+**PURPOSE:** Signal accountability without fabricating numbers. Per `CLAUDE.md` rule 6, this section stays a labelled placeholder for the number itself — no invented percentages, however "illustrative" the label — until the owner supplies confirmed figures. What's formulated here is the *design*: which six metrics carry the section, how they're worded, and a stat-card component ready to take a real number in one line-change per card.
 
-**LAYOUT:** Dark section (`--midnight` or `--ink`) for contrast with Section 11. Card/list grid of outcome *categories* — no numbers unless the owner confirms them.
+**LAYOUT:** Dark section (`--midnight` or `--ink`) for contrast with Section 11. Six-card grid (3-up desktop, 2-up tablet, 1-up mobile). Each card: large Fraunces numeral slot, IBM Plex Mono category label beneath, one-line context sentence.
 
 **COPY:**
 - Eyebrow: `◆ RESULTS YOU CAN SEE`
 - H2: `"Every engagement starts with a measurable business outcome."`
-- Outcome categories (labels only, `[PLACEHOLDER]` for any number): `Qualified opportunities generated` · `Meetings booked` · `Proposal turnaround time` · `Sales conversion rate` · `Outstanding revenue recovered` · `Customer renewal rate` · `Administrative hours saved` · `Cost per acquisition` · `Revenue generated`
+- Six stat cards — numeral slot renders as a gold mono `—` placeholder (not "0%", not an invented figure) until a real number replaces it:
+  1. **Qualified opportunities generated** — `"Pipeline built from targeted outreach and lead qualification."`
+  2. **Proposal turnaround time** — `"From brief to sent proposal."`
+  3. **Sales conversion rate** — `"Enquiries that become paying customers."`
+  4. **Outstanding revenue recovered** — `"Aged receivables collected through automated follow-up."`
+  5. **Customer renewal rate** — `"Accounts retained past their renewal date."`
+  6. **Administrative hours saved** — `"Time returned to revenue-generating work."`
 - Supporting line: `"No vague promises. No activity without accountability. Every engagement begins with clear objectives and measurable success indicators."`
+- Directly under the grid, small mono note (ivory 50%, always visible, not a tooltip): `"Figures published here reflect confirmed engagement results only."`
 
-**MOTION:** Reveal on scroll only — no count-up here since there are no real numbers yet. Add count-up once the owner supplies confirmed figures.
+**MOTION:** Reveal on scroll only — no count-up animation while the numeral slot shows `—`. Once the owner supplies a real figure for a card, swap the placeholder for the number and enable count-up on that card only (don't wait for all six to have real numbers before animating any of them).
 
 ---
 
@@ -324,10 +331,12 @@ Each card CTA: `Explore solutions` — link to the closest matching content (Sec
 - Benefits: `Identify major revenue-leakage points` · `Discover automation opportunities` · `Receive immediate growth recommendations` · `Get a customised revenue-system roadmap`
 - CTA: `Start my revenue assessment`
 
-**Form (frontend only — build the multi-step UI now, do not invent a submission endpoint):**
-Fields: Name · Work email · Phone number · Company · Role · Company size · Primary business challenge · Current sales process · Main source of leads · Follow-up process · Outstanding invoice challenge · Desired outcome.
+**Form fields (name → matching backend key):** Name → `name` · Work email → `email` · Phone number → `phone` · Company → `company` · Role → `role` · Company size → `companySize` · Primary business challenge → `primaryChallenge` · Current sales process → `currentSalesProcess` · Main source of leads → `leadSource` · Follow-up process → `followUpProcess` · Outstanding invoice challenge → `invoiceChallenge` · Desired outcome → `desiredOutcome`. Include one hidden honeypot field named `website` (visually hidden, not `display:none` — use an off-screen technique screen readers also skip via `aria-hidden` + `tabindex="-1"`) — leave it empty; the backend rejects any submission where it's filled in.
 
-`[PLACEHOLDER]`: no backend/API exists yet. Wire the form to validate and show a "thanks, we'll be in touch" state on the client, clearly commented in the code (`// TODO: connect to real form handler — see CLAUDE.md Assets`) so it's obvious nothing is silently failing or fake-succeeding against a real endpoint. Do not point it at a fabricated URL.
+**Backend:** real, working code exists at `backend/revenue-assessment-worker/` (a standalone Cloudflare Worker, deployed independently of the static site — see its `README.md`). It is not yet deployed, since that requires the owner's own Resend account and Cloudflare account/API key, which can't be created on their behalf. Until it's deployed:
+- Build the full multi-step form UI, client-side validation, and a "thanks, we'll be in touch" success state now.
+- POST to a `const REVENUE_ASSESSMENT_ENDPOINT` at the top of `main.js`, clearly commented `// TODO: set to the deployed worker URL — see backend/revenue-assessment-worker/README.md`.
+- While `REVENUE_ASSESSMENT_ENDPOINT` is unset, the submit handler shows a clear, honest local message (e.g. "Thanks — assessment submissions aren't live yet") rather than silently succeeding or silently failing against a fake URL.
 
 **MOTION:** Standard reveal; multi-step transitions ~200ms, focus moves to the next step's first field for accessibility.
 
@@ -447,6 +456,6 @@ Same discipline as `CLAUDE.md`: fade + 16px rise, ~600ms, cubic-bezier(0.22,1,0.
 
 **Still needed from the owner:**
 1. Confirmed stat numbers for Measurable Outcomes (Section 12) — currently category labels only, no numbers.
-2. A real backend/API endpoint for the Revenue Leakage Assessment form (Section 13) — frontend will be built and clearly marked as unconnected until this exists.
+2. Deployment of the Revenue Leakage Assessment backend (Section 13) — the worker code is written (`backend/revenue-assessment-worker/`), but needs the owner's Resend account (verified sending domain) and Cloudflare account to actually go live. Frontend stays clearly marked as unconnected until a real deployed URL exists.
 3. Leadership names/titles/bios, if a leadership preview grid (beyond the current About copy) is wanted in Section 14.
 4. Confirmation of existing footer contact info and social links to carry forward unchanged (no new ones invented).
