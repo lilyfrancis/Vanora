@@ -1,5 +1,11 @@
 # Revenue Leakage Assessment — intake worker
 
+> **Superseded as the primary target:** the site owner's chosen backend is
+> now `backend/revenue-assessment-hostinger/` (plain PHP for Hostinger
+> shared hosting). This Worker still works and stays here as a documented
+> alternative if hosting plans change, but don't deploy both — see the
+> "Why PHP + Hostinger" note in the Hostinger backend's README.
+
 Standalone Cloudflare Worker that receives the Section 13 form submission
 (`vanora-partners-website-brief.md`) as JSON and emails it via
 [Resend](https://resend.com). It's deployed independently of the static

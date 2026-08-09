@@ -321,24 +321,63 @@ Each card CTA: `Explore solutions` — link to the closest matching content (Sec
 ---
 
 ### SECTION 13 — Revenue Leakage Assessment
-**PURPOSE:** Primary lead-generation moment.
+**PURPOSE:** Primary lead-generation moment. This is a self-report diagnostic, not a revenue-loss calculator — it rates how the visitor's own answers compare to a healthy commercial operation, in words, never in a dollar figure. `CLAUDE.md` rule 6 and the owner's explicit instruction both rule out claiming an exact amount of lost revenue without a verified formula and real company data — neither exists, so this section will never render a `$` figure.
 
-**LAYOUT:** Visually distinct card, glassmorphism treatment, `--champagne` or `--ivory` background.
+**LAYOUT:** Visually distinct card, glassmorphism treatment, `--champagne` or `--ivory` background. Multi-step: (1) contact/firmographic info, (2) six diagnostic questions, (3) consent + submit, (4) results screen.
 
-**COPY:**
+**Intro COPY:**
 - H2: `"How much revenue is your business losing?"`
 - Body: `"Take the Vanora Revenue Leakage Assessment to identify breakdowns in lead management, sales follow-up, proposals, collections, renewals and operational workflows."`
 - Benefits: `Identify major revenue-leakage points` · `Discover automation opportunities` · `Receive immediate growth recommendations` · `Get a customised revenue-system roadmap`
 - CTA: `Start my revenue assessment`
 
-**Form fields (name → matching backend key):** Name → `name` · Work email → `email` · Phone number → `phone` · Company → `company` · Role → `role` · Company size → `companySize` · Primary business challenge → `primaryChallenge` · Current sales process → `currentSalesProcess` · Main source of leads → `leadSource` · Follow-up process → `followUpProcess` · Outstanding invoice challenge → `invoiceChallenge` · Desired outcome → `desiredOutcome`. Include one hidden honeypot field named `website` (visually hidden, not `display:none` — use an off-screen technique screen readers also skip via `aria-hidden` + `tabindex="-1"`) — leave it empty; the backend rejects any submission where it's filled in.
+**Step 1 — Contact fields (name → backend key):** Name → `name` · Work email → `email` · Phone number → `phone` · Company → `company` · Role → `role` · Company size → `companySize`. No sensitive data is collected anywhere in this form — no passwords, no banking/payment details, no national ID or other unnecessary personal data. If a future field ever tempts scope creep in that direction, it doesn't belong here.
 
-**Backend:** real, working code exists at `backend/revenue-assessment-worker/` (a standalone Cloudflare Worker, deployed independently of the static site — see its `README.md`). It is not yet deployed, since that requires the owner's own Resend account and Cloudflare account/API key, which can't be created on their behalf. Until it's deployed:
-- Build the full multi-step form UI, client-side validation, and a "thanks, we'll be in touch" success state now.
-- POST to a `const REVENUE_ASSESSMENT_ENDPOINT` at the top of `main.js`, clearly commented `// TODO: set to the deployed worker URL — see backend/revenue-assessment-worker/README.md`.
-- While `REVENUE_ASSESSMENT_ENDPOINT` is unset, the submit handler shows a clear, honest local message (e.g. "Thanks — assessment submissions aren't live yet") rather than silently succeeding or silently failing against a fake URL.
+**Step 2 — Diagnostic questions (single-select, exactly 3 options each — this is what makes the results ratings honest self-classification rather than a fabricated score).** Each option is tagged `strong` / `attention` / `gap` — the tag is the rating contribution, nothing is calculated from free text:
 
-**MOTION:** Standard reveal; multi-step transitions ~200ms, focus moves to the next step's first field for accessibility.
+1. **Lead management** (`leadResponseTime`) — *"How consistently are new leads followed up?"*
+   `Always followed up within 24 hours` (strong) · `Followed up inconsistently` (attention) · `Often no follow-up at all` (gap)
+2. **Sales process** (`salesProcess`) — *"How predictable is your sales conversion process?"*
+   `Clear, repeatable process` (strong) · `Some structure but inconsistent` (attention) · `No defined process` (gap)
+3. **Proposals** (`proposalSpeed`) — *"How long does it typically take to send a proposal after a request?"*
+   `Same day to 48 hours` (strong) · `3–7 days` (attention) · `More than a week, or ad hoc` (gap)
+4. **Collections** (`collectionsProcess`) — *"How are overdue invoices handled?"*
+   `Automated reminders and consistent follow-up` (strong) · `Manual, occasional follow-up` (attention) · `No consistent collections process` (gap)
+5. **Renewals** (`renewalTracking`) — *"How are customer renewals tracked?"*
+   `Proactively tracked with advance outreach` (strong) · `Tracked but reactive` (attention) · `Not actively tracked` (gap)
+6. **Operations** (`adminWorkload`) — *"How much manual administrative work does your team handle weekly?"*
+   `Minimal, mostly automated` (strong) · `Moderate manual workload` (attention) · `Heavy manual workload` (gap)
+
+Plus one open field, not scored: **Desired outcome** (`desiredOutcome`) — *"What would you most like to change?"* (free text, optional).
+
+**Rating logic (compute identically on the client for the results screen and on the server for the stored/emailed record — never trust only the client's number):**
+- Each of the 6 diagnostic answers maps to a tag (`strong`/`attention`/`gap`) per the options above.
+- **Category ratings** shown individually: `Strong` / `Needs Attention` / `High-Priority Gap` (the exact three labels — always this wording, never a numeric score or percentage).
+- **Overall rating** = whichever tag is the mode (most frequent) across the 6 answers; a tie is broken toward the more cautious tag (`gap` over `attention` over `strong`). This is a transparent, documented rule — not a hidden formula, and not a revenue-dollar calculation.
+
+**Step 3 — Consent (required to submit):**
+- Required checkbox, unchecked by default: `"I agree to be contacted by Vanora Partners about this assessment and consent to my information being processed in line with the "` + inline link `Privacy Policy` (reuse the same footer Privacy Policy link — don't invent a second URL) + `"."`
+- Submit is disabled until the checkbox is checked; this is enforced in the UI, not just on the backend.
+- Hidden honeypot field `website` (visually hidden via an off-screen technique that screen readers also skip — `aria-hidden` + `tabindex="-1"`, not `display:none`) — leave empty; backend rejects any submission where it's filled in.
+
+**Step 4 — Results screen:**
+- Heading: `"Your Preliminary Revenue Growth Assessment"`
+- Overall rating badge (`Strong` / `Needs Attention` / `High-Priority Gap`) in Fraunces, colour-coded per `CLAUDE.md` tokens only — e.g. gold/ivory for Strong, slate/champagne for Needs Attention, a restrained warm tone for High-Priority Gap that still respects "no violet, ever" and AA contrast; do not use a stock red/green/yellow traffic-light palette that clashes with the brand.
+- Six category rows, each showing its own `Strong` / `Needs Attention` / `High-Priority Gap` badge and the matching Vanora solution area (map straight to Section 7 AI products / Section 8 revenue engine stages — e.g. a `gap` on Collections points at CashFlow Recovery AI).
+- Disclaimer (always visible, not fine print hidden in a tooltip): `"This initial assessment is directional and should be validated against your company's actual commercial and operational data."`
+- Final actions (three buttons, sentence case per the button system, shown here in brief-emphasis caps):
+  - `BOOK A STRATEGY SESSION` (primary) — same booking destination as the site's other CTAs.
+  - `EMAIL MY ASSESSMENT` (secondary) — sends the results to the respondent's own submitted email address via the same backend, flagged `sendCopyToRespondent: true` in the payload; shows the same "not live yet" honest state as the main submit until the backend is deployed.
+  - `EXPLORE THE VANORA REVENUE ENGINE` (tertiary, text link) — anchors to Section 8.
+
+**Data captured with every submission** (stored/emailed as one structured record, per the owner's requirement): all Step 1 + Step 2 + `desiredOutcome` answers · the six category ratings · the overall rating · consent status (`true`, with the exact consent copy version/timestamp) · source page (`window.location.href` or the page path the form was submitted from) · UTM parameters (`utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` — read from the query string on page load, stored in the form state, submitted even if the visitor navigates before submitting) · submission timestamp (client ISO 8601 timestamp, with the server also stamping its own authoritative receipt time — store both).
+
+**Backend — target is Hostinger, not the earlier Cloudflare Worker:** real, working code now exists at `backend/revenue-assessment-hostinger/` (plain PHP, matches Hostinger shared hosting — see its `README.md`). The Cloudflare Worker built earlier (`backend/revenue-assessment-worker/`) still works as a documented alternative if hosting plans change, but Hostinger is the primary target going forward; don't build a third option without a reason. Neither is deployed yet — that needs the owner's real Hostinger account (file upload, PHP mail/SMTP setup). Until it's deployed:
+- Build the full multi-step form UI, client-side validation, client-side rating computation (for instant results), and the results screen now.
+- POST to a single `const REVENUE_ASSESSMENT_ENDPOINT` at the top of `main.js`, clearly commented `// TODO: set to the deployed Hostinger endpoint — see backend/revenue-assessment-hostinger/README.md`.
+- While `REVENUE_ASSESSMENT_ENDPOINT` is unset, the results screen still renders (it's computed client-side from the visitor's own answers — that part isn't fake), but "Email my assessment" and the underlying data capture show a clear, honest local message that submission storage isn't live yet, instead of silently succeeding or pretending a fake URL accepted the data.
+
+**MOTION:** Standard reveal; multi-step transitions ~200ms, focus moves to the next step's first field for accessibility; results screen badges fade in staggered per category row, not all at once.
 
 ---
 
