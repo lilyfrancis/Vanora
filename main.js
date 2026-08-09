@@ -63,6 +63,36 @@
     }
   });
 
+  /* ==========================================================================
+     Nav "Solutions" dropdown — hover works via CSS alone; this adds click
+     (touch) and Escape support, and keeps aria-expanded accurate for
+     keyboard/screen-reader users.
+     ========================================================================== */
+  var navDropdown = document.querySelector('.nav__dropdown');
+  if (navDropdown) {
+    var dropdownTrigger = navDropdown.querySelector('.nav__dropdown-trigger');
+
+    function closeDropdown() {
+      navDropdown.classList.remove('is-open');
+      dropdownTrigger.setAttribute('aria-expanded', 'false');
+    }
+
+    dropdownTrigger.addEventListener('click', function () {
+      var isOpen = navDropdown.classList.toggle('is-open');
+      dropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!navDropdown.contains(e.target)) closeDropdown();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeDropdown();
+    });
+    navDropdown.querySelectorAll('.nav__dropdown-menu a').forEach(function (link) {
+      link.addEventListener('click', closeDropdown);
+    });
+  }
+
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ==========================================================================
