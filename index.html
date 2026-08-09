@@ -1,22 +1,796 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vanora Partners — strategy and execution firm, a division of Techbots Group. Strategy. Installed." />
-    <title>Vanora Partners — Strategy. Installed.</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanora Partners | AI-Powered Revenue Growth &amp; Business Transformation</title>
+  <meta name="description" content="Vanora Partners builds AI-powered revenue, automation and business transformation systems that help ambitious companies sell more, collect faster and scale intelligently.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <meta property="og:title" content="Vanora Partners | AI-Powered Revenue Growth &amp; Business Transformation">
+  <meta property="og:description" content="Vanora Partners builds AI-powered revenue, automation and business transformation systems that help ambitious companies sell more, collect faster and scale intelligently.">
+  <meta property="og:image" content="assets/og-image-placeholder.svg">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="assets/logo-icon-vp-navy.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav__logo" href="#top" aria-label="Vanora Partners — home">
+        <img class="nav__logo-img nav__logo-img--white" src="assets/logo-full-white.png" alt="Vanora Partners" width="210" height="40">
+        <img class="nav__logo-img nav__logo-img--navy" src="assets/logo-full-navy.png" alt="Vanora Partners" width="210" height="40">
+      </a>
+
+      <!-- Insights has no real content yet, so it points at About per the brief's
+           own instruction (vanora-partners-website-brief.md §3) until a real
+           Insights destination exists. -->
+      <ul class="nav__links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#solutions-selector">Solutions</a></li>
+        <li><a href="#sectors">Industries</a></li>
+        <li><a href="#ai-solutions">Vanora AI</a></li>
+        <li><a href="#approach">How We Work</a></li>
+        <li><a href="#about">Insights</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="btn btn--primary nav__cta">Book a strategy session</a>
+
+      <button type="button" class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <img class="mobile-menu__icon" src="assets/logo-icon-vp-white.png" alt="" width="48" height="48">
+    <nav class="mobile-menu__links" aria-label="Mobile navigation">
+      <a href="#top">Home</a>
+      <a href="#solutions-selector">Solutions</a>
+      <a href="#sectors">Industries</a>
+      <a href="#ai-solutions">Vanora AI</a>
+      <a href="#approach">How We Work</a>
+      <a href="#about">Insights</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn--primary">Book a strategy session</a>
+  </div>
+
+  <main>
+    <section id="hero" class="hero on-dark">
+      <div class="hero__ambient" aria-hidden="true">
+        <span class="hero__diamond">&#9670;</span>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow reveal-load" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Strategy. Installed.
+          </p>
+
+          <h1 class="hero__heading">
+            <span class="hero__line reveal-load" style="--delay:120ms">We build the systems behind <span class="hero__accent-word">predictable</span> growth.</span>
+          </h1>
+
+          <p class="hero__subhead reveal-load" style="--delay:300ms">
+            Vanora combines strategy, AI, revenue systems, automation, talent and hands-on execution to help ambitious companies sell more, collect faster, operate better and scale intelligently.
+          </p>
+
+          <div class="hero__ctas reveal-load" style="--delay:450ms">
+            <a href="#contact" class="btn btn--primary">Book a strategy session</a>
+            <a href="#solutions-selector" class="link-arrow">Explore our solutions <span aria-hidden="true">&rarr;</span></a>
+          </div>
+
+          <p class="hero__credibility reveal-load" style="--delay:450ms">Built for ambitious companies, founders and executive teams.</p>
+
+          <div class="hero__micro-cards reveal-load" style="--delay:560ms">
+            <div class="micro-card">
+              <p class="micro-card__title">Revenue Systems</p>
+              <p class="micro-card__body">Build predictable pipelines</p>
+            </div>
+            <div class="micro-card">
+              <p class="micro-card__title">AI Automation</p>
+              <p class="micro-card__body">Remove repetitive work</p>
+            </div>
+            <div class="micro-card">
+              <p class="micro-card__title">Business Transformation</p>
+              <p class="micro-card__body">Scale with stronger operations</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal-load" style="--delay:150ms">
+          <div class="hero__visual-frame">
+            <img src="assets/vanora-homepage-hero.png" alt="Vanora Partners executive team reviewing a revenue dashboard in a boardroom" width="1774" height="887" loading="eager" fetchpriority="high">
+          </div>
+
+          <div class="brand-seal" aria-hidden="true">
+            <svg class="brand-seal__ring" viewBox="0 0 200 200">
+              <path id="brandSealPath" fill="none" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"></path>
+              <text class="brand-seal__text">
+                <textPath href="#brandSealPath" startOffset="0%">STRATEGY INSTALLED &bull; REVENUE ENGINEERED &bull; GROWTH DELIVERED &bull; </textPath>
+              </text>
+            </svg>
+            <img class="brand-seal__mark" src="assets/logo-icon-vp-navy.png" alt="" width="34" height="34">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust" class="industry-strip">
+      <div class="industry-strip__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Built for ambitious organisations
+        </p>
+        <ul class="industry-strip__list">
+          <li class="reveal" style="--delay:60ms">Property and Real Estate</li>
+          <li class="reveal" style="--delay:100ms">Hospitality</li>
+          <li class="reveal" style="--delay:140ms">Education</li>
+          <li class="reveal" style="--delay:180ms">Distribution and FMCG</li>
+          <li class="reveal" style="--delay:220ms">Professional Services</li>
+          <li class="reveal" style="--delay:260ms">Technology</li>
+          <li class="reveal" style="--delay:300ms">Growth-Stage Businesses</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="problems" class="problems">
+      <div class="problems__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Where growth breaks down
+        </p>
+        <h2 class="problems__heading reveal" style="--delay:80ms">Growth should not feel this difficult.</h2>
+        <p class="problems__body reveal" style="--delay:140ms">
+          Your business may have a strong product, an experienced team and ambitious targets — but without a connected revenue system, valuable opportunities continue to slip away.
+        </p>
+
+        <div class="problems__grid">
+          <div class="problem-card reveal" style="--delay:0ms">Leads are not followed up</div>
+          <div class="problem-card reveal" style="--delay:60ms">Proposals take too long</div>
+          <div class="problem-card reveal" style="--delay:120ms">Executives are overwhelmed</div>
+          <div class="problem-card reveal" style="--delay:180ms">Invoices remain unpaid</div>
+          <div class="problem-card reveal" style="--delay:240ms">Customers quietly disappear</div>
+          <div class="problem-card reveal" style="--delay:300ms">Sales performance is difficult to measure</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promise" class="promise">
+      <div class="promise__inner">
+        <div class="promise__visual" id="promiseVisual">
+          <div class="promise__visual-frame reveal" style="--delay:100ms">
+            <img src="assets/vanora-strategy-installed.png" alt="Vanora Partners consultant presenting a revenue funnel and performance dashboard to a boardroom" width="1672" height="941" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="promise__text">
+          <p class="eyebrow reveal" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> What Vanora installs
+          </p>
+          <h2 class="promise__heading reveal" style="--delay:80ms">We turn business chaos into connected growth systems.</h2>
+          <p class="promise__body reveal" style="--delay:160ms">
+            Vanora designs and implements practical systems that connect your people, processes, data and technology. We do not leave recommendations inside presentations. We build, deploy and optimise solutions your team can actually use.
+          </p>
+          <ul class="promise__list reveal" style="--delay:220ms">
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Generate qualified opportunities</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Convert more prospects</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Automate repetitive work</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Improve executive decision-making</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Recover outstanding revenue</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Retain valuable customers</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Enter new markets</li>
+            <li><span class="promise__tick" aria-hidden="true">&#9670;</span> Build scalable operations</li>
+          </ul>
+          <a href="#why-vanora" class="btn btn--secondary reveal" style="--delay:280ms">Discover the Vanora difference</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions-selector" class="selector on-dark">
+      <div class="selector__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Find your solution
+        </p>
+        <h2 class="selector__heading reveal" style="--delay:80ms">What would you like to improve?</h2>
+
+        <div class="selector__widget reveal" id="solutionsSelector" style="--delay:160ms">
+          <div class="selector__tabs" role="tablist" aria-label="Business challenges">
+            <button type="button" role="tab" id="tab-leads" aria-controls="panel-leads" aria-selected="true" tabindex="0">Generate qualified leads</button>
+            <button type="button" role="tab" id="tab-automate" aria-controls="panel-automate" aria-selected="false" tabindex="-1">Automate sales &amp; service</button>
+            <button type="button" role="tab" id="tab-recover" aria-controls="panel-recover" aria-selected="false" tabindex="-1">Recover outstanding revenue</button>
+            <button type="button" role="tab" id="tab-productivity" aria-controls="panel-productivity" aria-selected="false" tabindex="-1">Improve executive productivity</button>
+            <button type="button" role="tab" id="tab-team" aria-controls="panel-team" aria-selected="false" tabindex="-1">Recruit a high-performing team</button>
+            <button type="button" role="tab" id="tab-market" aria-controls="panel-market" aria-selected="false" tabindex="-1">Enter a new market</button>
+            <button type="button" role="tab" id="tab-launch" aria-controls="panel-launch" aria-selected="false" tabindex="-1">Launch or scale a company</button>
+            <button type="button" role="tab" id="tab-transform" aria-controls="panel-transform" aria-selected="false" tabindex="-1">Transform business operations</button>
+          </div>
+
+          <div class="selector__panels">
+            <div role="tabpanel" id="panel-leads" aria-labelledby="tab-leads" class="selector__panel">
+              <h3>Vanora Revenue Engine</h3>
+              <p>A connected system for market intelligence, lead generation and qualification — not another disconnected list of contacts.</p>
+              <ul><li>Predictable, measurable pipeline</li><li>Qualified meetings, not cold names</li></ul>
+              <a href="#revenue-engine" class="btn btn--secondary">Explore the Revenue Engine</a>
+            </div>
+            <div role="tabpanel" id="panel-automate" aria-labelledby="tab-automate" class="selector__panel" hidden>
+              <h3>AI Voice and WhatsApp Automation</h3>
+              <p>Automates customer conversations, qualification, booking, follow-up and support across high-volume channels.</p>
+              <ul><li>Faster response, fewer missed conversations</li><li>Consistent service without adding headcount</li></ul>
+              <a href="#ai-solutions" class="btn btn--secondary">See AI Voice &amp; WhatsApp Automation</a>
+            </div>
+            <div role="tabpanel" id="panel-recover" aria-labelledby="tab-recover" class="selector__panel" hidden>
+              <h3>CashFlow Recovery AI</h3>
+              <p>Identifies overdue accounts, prioritises collection activity and automates personalised payment follow-up.</p>
+              <ul><li>Structured, consistent collections process</li><li>Less manual chasing of overdue invoices</li></ul>
+              <a href="#ai-solutions" class="btn btn--secondary">See CashFlow Recovery AI</a>
+            </div>
+            <div role="tabpanel" id="panel-productivity" aria-labelledby="tab-productivity" class="selector__panel" hidden>
+              <h3>ExecutiveOS AI</h3>
+              <p>An AI-powered executive command centre that turns meetings, emails and commitments into decision-ready intelligence.</p>
+              <ul><li>Less time lost to admin and status-chasing</li><li>Clearer, faster executive decisions</li></ul>
+              <a href="#ai-solutions" class="btn btn--secondary">See ExecutiveOS AI</a>
+            </div>
+            <div role="tabpanel" id="panel-team" aria-labelledby="tab-team" class="selector__panel" hidden>
+              <h3>Corporate Training</h3>
+              <p>Equips executives, commercial teams and operational leaders with practical AI, revenue and digital capabilities.</p>
+              <ul><li>Teams that can apply new systems immediately</li><li>Capability that stays after the engagement</li></ul>
+              <a href="#training" class="btn btn--secondary">Explore Corporate Training</a>
+            </div>
+            <div role="tabpanel" id="panel-market" aria-labelledby="tab-market" class="selector__panel" hidden>
+              <h3>Vanora Promise</h3>
+              <p>Connected go-to-market systems — people, process, data and technology — built for a new market, not retrofitted.</p>
+              <ul><li>A repeatable path to market, not a one-off push</li><li>Infrastructure that scales past launch</li></ul>
+              <a href="#promise" class="btn btn--secondary">See what Vanora installs</a>
+            </div>
+            <div role="tabpanel" id="panel-launch" aria-labelledby="tab-launch" class="selector__panel" hidden>
+              <h3>Vanora Revenue Engine</h3>
+              <p>Market intelligence, lead generation, sales automation, CRM, conversion and retention connected into one system.</p>
+              <ul><li>One measurable system instead of scattered tools</li><li>Built to scale as the company grows</li></ul>
+              <a href="#revenue-engine" class="btn btn--secondary">Build my revenue engine</a>
+            </div>
+            <div role="tabpanel" id="panel-transform" aria-labelledby="tab-transform" class="selector__panel" hidden>
+              <h3>How Vanora Works</h3>
+              <p>A clear five-step path — diagnose, design, deploy, enable, optimise — for transforming how the business operates.</p>
+              <ul><li>Sequenced, not scattered</li><li>Handed to your team, not left with us</li></ul>
+              <a href="#approach" class="btn btn--secondary">See how Vanora works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai-solutions" class="ai-solutions">
+      <div class="ai-solutions__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Vanora AI
+        </p>
+        <h2 class="ai-solutions__heading reveal" style="--delay:80ms">AI that does more than talk. It produces business results.</h2>
+
+        <div class="ai-solutions__grid">
+          <article class="ai-card reveal" style="--delay:0ms">
+            <svg class="ai-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M4 9h5M4 15h5"/></svg>
+            <h3>ExecutiveOS AI</h3>
+            <p>An AI-powered executive command centre that turns meetings, emails and commitments into decision-ready intelligence.</p>
+          </article>
+          <article class="ai-card reveal" style="--delay:80ms">
+            <svg class="ai-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12a9 9 0 1 1 4 7.5"/><path d="M3 21v-5h5"/><path d="M12 8v4l3 2"/></svg>
+            <h3>CashFlow Recovery AI</h3>
+            <p>Identifies overdue accounts, prioritises collection activity and automates personalised payment follow-up.</p>
+          </article>
+          <article class="ai-card reveal" style="--delay:160ms">
+            <svg class="ai-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg>
+            <h3>TenderPilot AI</h3>
+            <p>Helps businesses discover relevant tenders, assess requirements and prepare stronger first-draft bid responses.</p>
+          </article>
+          <article class="ai-card reveal" style="--delay:240ms">
+            <svg class="ai-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M15 3v5h5M9 13h6M9 17h6"/></svg>
+            <h3>ProposalForge AI</h3>
+            <p>Turns a short sales brief into professional proposals, quotations, scopes of work and follow-up communication.</p>
+          </article>
+          <article class="ai-card reveal" style="--delay:320ms">
+            <svg class="ai-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg>
+            <h3>RenewalGuard AI</h3>
+            <p>Tracks renewal dates, identifies at-risk accounts and triggers timely retention actions.</p>
+          </article>
+          <article class="ai-card reveal" style="--delay:400ms">
+            <svg class="ai-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="4"/><path d="M11 6h2"/></svg>
+            <h3>AI Voice &amp; WhatsApp Automation</h3>
+            <p>Automates customer conversations, qualification, booking, follow-up and support across high-volume channels.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="revenue-engine" class="engine">
+      <div class="engine__inner">
+        <div class="engine__text">
+          <p class="eyebrow reveal" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Vanora Revenue Engine
+          </p>
+          <h2 class="engine__heading reveal" style="--delay:80ms">Stop chasing revenue. Build a system that produces it.</h2>
+          <p class="engine__body reveal" style="--delay:160ms">
+            We connect market intelligence, lead generation, sales automation, CRM implementation, conversion strategy, customer retention and performance reporting into one measurable revenue system.
+          </p>
+          <a href="#contact" class="btn btn--primary reveal" style="--delay:220ms">Build my revenue engine</a>
+        </div>
+
+        <div class="engine__track" id="engineTrack">
+          <div class="process__line engine__line" aria-hidden="true">
+            <div class="process__line-fill"></div>
+          </div>
+          <div class="engine__step reveal" style="--delay:0ms"><span class="engine__node process__node" aria-hidden="true"></span><p>Market Intelligence</p></div>
+          <div class="engine__step reveal" style="--delay:60ms"><span class="engine__node process__node" aria-hidden="true"></span><p>Qualified Leads</p></div>
+          <div class="engine__step reveal" style="--delay:120ms"><span class="engine__node process__node" aria-hidden="true"></span><p>Meetings</p></div>
+          <div class="engine__step reveal" style="--delay:180ms"><span class="engine__node process__node" aria-hidden="true"></span><p>Proposals</p></div>
+          <div class="engine__step reveal" style="--delay:240ms"><span class="engine__node process__node" aria-hidden="true"></span><p>Customers</p></div>
+          <div class="engine__step reveal" style="--delay:300ms"><span class="engine__node process__node" aria-hidden="true"></span><p>Renewals</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sectors" class="sectors">
+      <div class="sectors__inner">
+        <h2 class="sectors__heading reveal" style="--delay:0ms">Every industry loses revenue differently.</h2>
+
+        <div class="sectors__grid">
+          <article class="sector-card reveal" style="--delay:0ms">
+            <div class="sector-card__image-wrap">
+              <img src="assets/financial-services.webp" alt="African financial professionals analysing business and customer performance data" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <svg class="sector-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
+            <h3>Financial Services</h3>
+            <p class="sector-card__challenge">Improve acquisition, collections, service delivery and customer retention.</p>
+            <p class="sector-card__solutions">AI customer service, collections automation, executive intelligence and revenue operations.</p>
+            <a href="#ai-solutions" class="link-arrow">Explore solutions <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="sector-card reveal" style="--delay:80ms">
+            <div class="sector-card__image-wrap">
+              <img src="assets/telecommunications.webp" alt="African telecommunications professionals monitoring network and business operations" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <svg class="sector-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"/><path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5"/><circle cx="12" cy="9" r="2"/><path d="M16.2 4.8c2 2 2.26 5.11.8 7.47"/><path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1"/><path d="M9.5 18h5"/><path d="m8 22 4-11 4 11"/></svg>
+            <h3>Telecommunications</h3>
+            <p class="sector-card__challenge">Manage high-volume customer interactions, renewals and service workflows.</p>
+            <p class="sector-card__solutions">Customer automation, lead qualification, retention systems and performance reporting.</p>
+            <a href="#ai-solutions" class="link-arrow">Explore solutions <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="sector-card reveal" style="--delay:160ms">
+            <div class="sector-card__image-wrap">
+              <img src="assets/property-and-real-estate.webp" alt="African real estate professionals reviewing plans for a property development" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <svg class="sector-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>
+            <h3>Property and Real Estate</h3>
+            <p class="sector-card__challenge">Convert more enquiries, improve agent follow-up and accelerate property payments.</p>
+            <p class="sector-card__solutions">Lead management, sales automation, proposal generation and payment follow-up.</p>
+            <a href="#ai-solutions" class="link-arrow">Explore solutions <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="sector-card reveal" style="--delay:240ms">
+            <div class="sector-card__image-wrap">
+              <img src="assets/distribution-and-fmcg.webp" alt="African supply-chain professional managing consumer-goods inventory in a warehouse" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <svg class="sector-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 21V10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v11"/><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 1.132-1.803l7.95-3.974a2 2 0 0 1 1.837 0l7.948 3.974A2 2 0 0 1 22 8z"/><path d="M6 13h12"/><path d="M6 17h12"/></svg>
+            <h3>Distribution and FMCG</h3>
+            <p class="sector-card__challenge">Improve order capture, distributor visibility, collections and territory performance.</p>
+            <p class="sector-card__solutions">Sales automation, distributor management, inventory intelligence and revenue reporting.</p>
+            <a href="#ai-solutions" class="link-arrow">Explore solutions <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="sector-card reveal" style="--delay:320ms">
+            <div class="sector-card__image-wrap">
+              <img src="assets/professional-services.webp" alt="African professional-services team discussing client and business strategy" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <svg class="sector-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12h.01"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M22 13a18.15 18.15 0 0 1-20 0"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+            <h3>Professional Services</h3>
+            <p class="sector-card__challenge">Turn expertise into a stronger and more predictable commercial pipeline.</p>
+            <p class="sector-card__solutions">Lead generation, proposals, tender support, client management and renewal automation.</p>
+            <a href="#ai-solutions" class="link-arrow">Explore solutions <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="sector-card reveal" style="--delay:400ms">
+            <div class="sector-card__image-wrap">
+              <img src="assets/technology-and-digital-businesses.webp" alt="African technology professionals collaborating in a modern digital workspace" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <svg class="sector-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/><path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/><path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/><path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+            <h3>Technology and Digital Businesses</h3>
+            <p class="sector-card__challenge">Build repeatable acquisition, onboarding, retention and market-entry systems.</p>
+            <p class="sector-card__solutions">Go-to-market strategy, pipeline automation, customer success and AI implementation.</p>
+            <a href="#ai-solutions" class="link-arrow">Explore solutions <span aria-hidden="true">&rarr;</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-vanora" class="why-vanora">
+      <div class="why-vanora__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> The difference
+        </p>
+        <h2 class="why-vanora__heading reveal" style="--delay:80ms">Why ambitious companies choose Vanora</h2>
+
+        <div class="why-vanora__reasons">
+          <div class="reason-card reveal" style="--delay:0ms"><h3>Built Around Revenue</h3><p>Every solution is connected to a measurable business outcome.</p></div>
+          <div class="reason-card reveal" style="--delay:60ms"><h3>AI With a Business Purpose</h3><p>We use AI to improve speed, productivity, customer experience and profitability.</p></div>
+          <div class="reason-card reveal" style="--delay:120ms"><h3>Strategy Plus Execution</h3><p>We help design, build, deploy and manage the solution.</p></div>
+          <div class="reason-card reveal" style="--delay:180ms"><h3>Solutions That Scale</h3><p>Our systems grow with your customers, team and objectives.</p></div>
+          <div class="reason-card reveal" style="--delay:240ms"><h3>One Connected Growth Partner</h3><p>Strategy, technology, talent, automation and execution under one partnership.</p></div>
+        </div>
+
+        <div class="why-vanora__grid">
+          <div class="why-vanora__col reveal" style="--delay:160ms">
+            <p class="why-vanora__col-label why-vanora__col-label--others">Traditional Consulting</p>
+            <ul class="why-vanora__list">
+              <li>Recommendations</li>
+              <li>Presentations</li>
+              <li>Handover</li>
+              <li>Limited implementation</li>
+            </ul>
+          </div>
+
+          <div class="why-vanora__col why-vanora__col--vanora">
+            <p class="why-vanora__col-label why-vanora__col-label--vanora reveal" style="--delay:200ms">Vanora Partners</p>
+            <ul class="why-vanora__list why-vanora__list--ticked">
+              <li class="reveal" style="--delay:280ms"><span class="why-vanora__tick" aria-hidden="true">&#9670;</span> Diagnosis</li>
+              <li class="reveal" style="--delay:360ms"><span class="why-vanora__tick" aria-hidden="true">&#9670;</span> System design</li>
+              <li class="reveal" style="--delay:440ms"><span class="why-vanora__tick" aria-hidden="true">&#9670;</span> Implementation</li>
+              <li class="reveal" style="--delay:520ms"><span class="why-vanora__tick" aria-hidden="true">&#9670;</span> Team enablement</li>
+              <li class="reveal" style="--delay:600ms"><span class="why-vanora__tick" aria-hidden="true">&#9670;</span> Continuous optimisation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="process">
+      <div class="process__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> How an engagement runs
+        </p>
+        <h2 class="process__heading reveal" style="--delay:80ms">From business problem to working growth system</h2>
+
+        <div class="process__track process__track--five" id="processTrack">
+          <div class="process__line" aria-hidden="true">
+            <div class="process__line-fill" id="processLineFill"></div>
+          </div>
+
+          <div class="process__step reveal" style="--delay:0ms">
+            <span class="process__node" aria-hidden="true"></span>
+            <p class="process__index">01</p>
+            <h3 class="process__title">Diagnose</h3>
+            <p class="process__body">Identify revenue leaks, operational bottlenecks and growth opportunities.</p>
+          </div>
+          <div class="process__step reveal" style="--delay:80ms">
+            <span class="process__node" aria-hidden="true"></span>
+            <p class="process__index">02</p>
+            <h3 class="process__title">Design</h3>
+            <p class="process__body">Create the right combination of strategy, technology, automation and expertise.</p>
+          </div>
+          <div class="process__step reveal" style="--delay:160ms">
+            <span class="process__node" aria-hidden="true"></span>
+            <p class="process__index">03</p>
+            <h3 class="process__title">Deploy</h3>
+            <p class="process__body">Build and integrate the solution into existing operations.</p>
+          </div>
+          <div class="process__step reveal" style="--delay:240ms">
+            <span class="process__node" aria-hidden="true"></span>
+            <p class="process__index">04</p>
+            <h3 class="process__title">Enable</h3>
+            <p class="process__body">Train the team and establish ownership, workflows and performance standards.</p>
+          </div>
+          <div class="process__step reveal" style="--delay:320ms">
+            <span class="process__node" aria-hidden="true"></span>
+            <p class="process__index">05</p>
+            <h3 class="process__title">Optimise</h3>
+            <p class="process__body">Monitor results, improve performance and scale what works.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes" class="outcomes on-dark">
+      <div class="outcomes__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Results you can see
+        </p>
+        <h2 class="outcomes__heading reveal" style="--delay:80ms">Every engagement starts with a measurable business outcome.</h2>
+
+        <div class="outcomes__grid">
+          <div class="outcome-card reveal" style="--delay:0ms"><p class="outcome-card__value">&mdash;</p><p class="outcome-card__label">Qualified opportunities generated</p><p class="outcome-card__context">Pipeline built from targeted outreach and lead qualification.</p></div>
+          <div class="outcome-card reveal" style="--delay:60ms"><p class="outcome-card__value">&mdash;</p><p class="outcome-card__label">Proposal turnaround time</p><p class="outcome-card__context">From brief to sent proposal.</p></div>
+          <div class="outcome-card reveal" style="--delay:120ms"><p class="outcome-card__value">&mdash;</p><p class="outcome-card__label">Sales conversion rate</p><p class="outcome-card__context">Enquiries that become paying customers.</p></div>
+          <div class="outcome-card reveal" style="--delay:180ms"><p class="outcome-card__value">&mdash;</p><p class="outcome-card__label">Outstanding revenue recovered</p><p class="outcome-card__context">Aged receivables collected through automated follow-up.</p></div>
+          <div class="outcome-card reveal" style="--delay:240ms"><p class="outcome-card__value">&mdash;</p><p class="outcome-card__label">Customer renewal rate</p><p class="outcome-card__context">Accounts retained past their renewal date.</p></div>
+          <div class="outcome-card reveal" style="--delay:300ms"><p class="outcome-card__value">&mdash;</p><p class="outcome-card__label">Administrative hours saved</p><p class="outcome-card__context">Time returned to revenue-generating work.</p></div>
+        </div>
+
+        <p class="outcomes__note reveal" style="--delay:360ms">No vague promises. No activity without accountability. Every engagement begins with clear objectives and measurable success indicators.</p>
+        <p class="outcomes__disclaimer">Figures published here reflect confirmed engagement results only.</p>
+      </div>
+    </section>
+
+    <section id="assessment" class="assessment">
+      <div class="assessment__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Revenue leakage assessment
+        </p>
+        <h2 class="assessment__heading reveal" style="--delay:80ms">How much revenue is your business losing?</h2>
+        <p class="assessment__body reveal" style="--delay:140ms">
+          Take the Vanora Revenue Leakage Assessment to identify breakdowns in lead management, sales follow-up, proposals, collections, renewals and operational workflows.
+        </p>
+        <ul class="assessment__benefits reveal" style="--delay:200ms">
+          <li>Identify major revenue-leakage points</li>
+          <li>Discover automation opportunities</li>
+          <li>Receive immediate growth recommendations</li>
+          <li>Get a customised revenue-system roadmap</li>
+        </ul>
+
+        <form class="assessment__form reveal" id="assessmentForm" style="--delay:260ms" novalidate>
+          <p class="assessment__step-indicator" id="assessmentStepIndicator" aria-live="polite">Step 1 of 3</p>
+
+          <!-- honeypot — real visitors never see or fill this -->
+          <div class="visually-hidden" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <fieldset class="assessment__step" data-step="0">
+            <legend>Your details</legend>
+            <div class="form-row">
+              <label for="af-name">Name</label>
+              <input type="text" id="af-name" name="name" required maxlength="200">
+            </div>
+            <div class="form-row">
+              <label for="af-email">Work email</label>
+              <input type="email" id="af-email" name="email" required maxlength="200">
+            </div>
+            <div class="form-row">
+              <label for="af-phone">Phone number</label>
+              <input type="tel" id="af-phone" name="phone" required maxlength="50">
+            </div>
+            <div class="form-row">
+              <label for="af-company">Company</label>
+              <input type="text" id="af-company" name="company" required maxlength="200">
+            </div>
+            <div class="form-row">
+              <label for="af-role">Role</label>
+              <input type="text" id="af-role" name="role" required maxlength="200">
+            </div>
+            <div class="form-row">
+              <label for="af-size">Company size</label>
+              <select id="af-size" name="companySize" required>
+                <option value="">Select&hellip;</option>
+                <option value="1-10">1–10</option>
+                <option value="11-50">11–50</option>
+                <option value="51-200">51–200</option>
+                <option value="201-1000">201–1000</option>
+                <option value="1000+">1000+</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn--primary" data-step-next>Continue</button>
+          </fieldset>
+
+          <fieldset class="assessment__step" data-step="1" hidden>
+            <legend>Your revenue systems today</legend>
+
+            <div class="diagnostic-question">
+              <p>How consistently are new leads followed up?</p>
+              <label><input type="radio" name="leadResponseTime" value="always_24h" required> Always followed up within 24 hours</label>
+              <label><input type="radio" name="leadResponseTime" value="inconsistent"> Followed up inconsistently</label>
+              <label><input type="radio" name="leadResponseTime" value="no_followup"> Often no follow-up at all</label>
+            </div>
+
+            <div class="diagnostic-question">
+              <p>How predictable is your sales conversion process?</p>
+              <label><input type="radio" name="salesProcess" value="clear_repeatable" required> Clear, repeatable process</label>
+              <label><input type="radio" name="salesProcess" value="some_structure"> Some structure but inconsistent</label>
+              <label><input type="radio" name="salesProcess" value="no_defined_process"> No defined process</label>
+            </div>
+
+            <div class="diagnostic-question">
+              <p>How long does it typically take to send a proposal after a request?</p>
+              <label><input type="radio" name="proposalSpeed" value="same_day_48h" required> Same day to 48 hours</label>
+              <label><input type="radio" name="proposalSpeed" value="three_to_seven_days"> 3–7 days</label>
+              <label><input type="radio" name="proposalSpeed" value="over_a_week"> More than a week, or ad hoc</label>
+            </div>
+
+            <div class="diagnostic-question">
+              <p>How are overdue invoices handled?</p>
+              <label><input type="radio" name="collectionsProcess" value="automated_reminders" required> Automated reminders and consistent follow-up</label>
+              <label><input type="radio" name="collectionsProcess" value="manual_occasional"> Manual, occasional follow-up</label>
+              <label><input type="radio" name="collectionsProcess" value="no_consistent_process"> No consistent collections process</label>
+            </div>
+
+            <div class="diagnostic-question">
+              <p>How are customer renewals tracked?</p>
+              <label><input type="radio" name="renewalTracking" value="proactive_advance" required> Proactively tracked with advance outreach</label>
+              <label><input type="radio" name="renewalTracking" value="tracked_reactive"> Tracked but reactive</label>
+              <label><input type="radio" name="renewalTracking" value="not_tracked"> Not actively tracked</label>
+            </div>
+
+            <div class="diagnostic-question">
+              <p>How much manual administrative work does your team handle weekly?</p>
+              <label><input type="radio" name="adminWorkload" value="minimal_automated" required> Minimal, mostly automated</label>
+              <label><input type="radio" name="adminWorkload" value="moderate_manual"> Moderate manual workload</label>
+              <label><input type="radio" name="adminWorkload" value="heavy_manual"> Heavy manual workload</label>
+            </div>
+
+            <div class="form-row">
+              <label for="af-outcome">What would you most like to change? (optional)</label>
+              <textarea id="af-outcome" name="desiredOutcome" maxlength="2000" rows="3"></textarea>
+            </div>
+
+            <div class="assessment__step-actions">
+              <button type="button" class="btn btn--secondary" data-step-back>Back</button>
+              <button type="button" class="btn btn--primary" data-step-next>Continue</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="assessment__step" data-step="2" hidden>
+            <legend>Consent</legend>
+            <div class="form-row form-row--checkbox">
+              <label>
+                <input type="checkbox" name="consent" required>
+                I agree to be contacted by Vanora Partners about this assessment and consent to my information being processed in line with the <a href="#privacy-policy">Privacy Policy</a>.
+              </label>
+            </div>
+            <div class="assessment__step-actions">
+              <button type="button" class="btn btn--secondary" data-step-back>Back</button>
+              <button type="submit" class="btn btn--primary">See my results</button>
+            </div>
+            <p class="assessment__status" id="assessmentSubmitStatus" role="status" hidden></p>
+          </fieldset>
+
+          <div class="assessment__step assessment__results" data-step="3" hidden>
+            <h3 class="assessment__results-heading">Your Preliminary Revenue Growth Assessment</h3>
+            <div class="assessment__overall">
+              <span class="rating-badge rating-badge--lg" id="assessmentOverallBadge">&mdash;</span>
+            </div>
+            <div class="assessment-result-rows" id="assessmentCategoryRows"></div>
+            <p class="assessment__disclaimer">This initial assessment is directional and should be validated against your company&rsquo;s actual commercial and operational data.</p>
+            <div class="assessment__final-actions">
+              <a href="#contact" class="btn btn--primary">Book a strategy session</a>
+              <button type="button" class="btn btn--secondary" id="assessmentEmailCopy">Email my assessment</button>
+              <a href="#revenue-engine" class="link-arrow">Explore the Vanora Revenue Engine <span aria-hidden="true">&rarr;</span></a>
+            </div>
+            <p class="assessment__status" id="assessmentEmailStatus" role="status" hidden></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about__inner">
+        <div class="about__text">
+          <p class="eyebrow reveal" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> About
+          </p>
+          <h2 class="about__heading reveal" style="--delay:80ms">A growth partner built for execution.</h2>
+          <p class="about__body reveal" style="--delay:160ms">
+            Vanora brings together commercial strategy, AI, automation, talent and practical implementation to help organisations turn ambitious objectives into working systems and measurable progress.
+          </p>
+          <p class="about__tagline reveal" style="--delay:200ms">Strategy Beyond Expectations.</p>
+          <a href="#contact" class="link-arrow about__link reveal" style="--delay:240ms">Meet Vanora Partners <span aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <div class="about__visual" id="aboutVisual">
+          <div class="about__visual-frame reveal" style="--delay:120ms">
+            <img src="assets/vanora-executive-advisory.png" alt="Vanora Partners advisor discussing performance data with two colleagues" width="1672" height="941" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="training" class="training">
+      <div class="training__inner">
+        <div class="training__text">
+          <p class="eyebrow reveal" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Corporate training
+          </p>
+          <h2 class="training__heading reveal" style="--delay:80ms">Build teams that can work, sell and lead in the AI era.</h2>
+          <p class="training__body reveal" style="--delay:160ms">
+            Vanora equips executives, commercial teams and operational leaders with practical AI, revenue and digital capabilities they can apply immediately.
+          </p>
+          <a href="#contact" class="btn btn--secondary reveal" style="--delay:220ms">Explore corporate programmes</a>
+        </div>
+        <div class="training__visual">
+          <div class="training__visual-frame reveal" style="--delay:120ms">
+            <img src="assets/vanora-revenue-growth-training.png" alt="Vanora Partners facilitator presenting a sales funnel to a small team" width="1586" height="992" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="final-cta on-dark">
+      <span class="final-cta__watermark" aria-hidden="true">&#9670;</span>
+      <div class="final-cta__inner">
+        <div class="final-cta__text">
+          <p class="eyebrow reveal" style="--delay:0ms">
+            <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Your next growth milestone
+          </p>
+          <h2 class="final-cta__heading reveal" style="--delay:80ms">Your next level of growth will require a better system.</h2>
+          <p class="final-cta__sub reveal" style="--delay:160ms">Vanora brings strategy, AI, automation, talent and execution together to help your business sell more, collect faster and scale intelligently.</p>
+          <div class="final-cta__ctas reveal" style="--delay:240ms">
+            <a href="mailto:hello@vanorapartners.com" class="btn btn--primary btn--glow">Book a strategy session</a>
+            <a href="mailto:hello@vanorapartners.com" class="btn btn--secondary">Speak with a growth partner</a>
+          </div>
+        </div>
+        <div class="final-cta__visual reveal" style="--delay:180ms">
+          <div class="final-cta__visual-frame">
+            <img src="assets/strategic-partnership.webp" alt="Business leaders establishing a strategic growth partnership" width="1536" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__col site-footer__col--brand">
+        <img class="site-footer__logo" src="assets/logo-full-white.png" alt="Vanora Partners" width="180" height="34">
+        <p class="site-footer__desc">Vanora Partners is an AI-powered revenue growth and business transformation company helping organisations generate opportunities, automate operations, improve decision-making and build predictable growth systems.</p>
+        <p class="site-footer__tagline">Strategy Beyond Expectations</p>
+      </div>
+
+      <div class="site-footer__col">
+        <p class="site-footer__col-label">Solutions</p>
+        <ul class="site-footer__links">
+          <li><a href="#ai-solutions">ExecutiveOS AI</a></li>
+          <li><a href="#ai-solutions">CashFlow Recovery AI</a></li>
+          <li><a href="#ai-solutions">TenderPilot AI</a></li>
+          <li><a href="#ai-solutions">ProposalForge AI</a></li>
+          <li><a href="#ai-solutions">RenewalGuard AI</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <p class="site-footer__col-label">Company</p>
+        <ul class="site-footer__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#approach">How We Work</a></li>
+          <li><a href="#about">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Book a strategy session</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <p class="site-footer__col-label">Contact</p>
+        <a href="mailto:hello@vanorapartners.com" class="site-footer__email">hello@vanorapartners.com</a>
+        <div class="site-footer__socials">
+          <span class="site-footer__social-placeholder">[LinkedIn — supply URL]</span>
+          <span class="site-footer__social-placeholder">[X — supply URL]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>&copy; <span id="footerYear">2026</span> Vanora Partners. All rights reserved. &middot; <a href="#privacy-policy">Privacy Policy</a> &middot; <a href="#privacy-policy">Terms</a></p>
+    </div>
+  </footer>
+
+  <!-- Neither a Privacy Policy nor Terms page exists yet in this repo — the v1
+       footer had no such links either, so this is genuinely new, not a reuse of
+       an existing page. Both links above point at the placeholder note below
+       rather than a fabricated URL. This is a real gap to close before the
+       Revenue Leakage Assessment's consent checkbox goes live — a required
+       consent checkbox referencing a policy that doesn't exist is a compliance
+       gap, not something markup can paper over. -->
+  <div id="privacy-policy" class="placeholder" style="margin:2rem auto;max-width:var(--content-width);padding:2rem;">
+    <p class="placeholder__label">PRIVACY POLICY &amp; TERMS — PLACEHOLDER<br>Supply real policy pages before the assessment form or footer links go live.</p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
 </html>

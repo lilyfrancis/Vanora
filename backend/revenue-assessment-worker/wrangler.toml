@@ -1,0 +1,13 @@
+name = "vanora-revenue-assessment"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Non-secret config. Override per environment with `wrangler deploy --var KEY:value`
+# or set directly here once you know the real values.
+[vars]
+NOTIFY_EMAIL = "hello@vanorapartners.com"
+FROM_EMAIL = "assessment@vanorapartners.com"
+ALLOWED_ORIGIN = "https://vanorapartners.com"
+
+# RESEND_API_KEY is a secret — never put it here.
+# Set it with: wrangler secret put RESEND_API_KEY
