@@ -28,14 +28,24 @@
         <img class="nav__logo-img nav__logo-img--navy" src="assets/logo-full-navy.png" alt="Vanora Partners" width="210" height="40">
       </a>
 
+      <!-- Interim anchor mapping while the v2 sections are built one at a time (see
+           vanora-partners-website-brief.md §3). Solutions/Vanora AI both point at the
+           current v1 "services" section until Sections 6/7 replace it; Industries points
+           at "results" until Section 9 (sector cards) exists; Insights has no content yet
+           so it points at About per the brief's own instruction. Update each as its real
+           section lands. -->
       <ul class="nav__links">
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#results">Results</a></li>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#services">Solutions</a></li>
+        <li><a href="#results">Industries</a></li>
+        <li><a href="#services">Vanora AI</a></li>
+        <li><a href="#approach">How We Work</a></li>
+        <li><a href="#about">Insights</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <a href="#contact" class="btn btn--primary nav__cta">Book a strategy call</a>
+      <a href="#contact" class="btn btn--primary nav__cta">Book a strategy session</a>
 
       <button type="button" class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span class="nav__toggle-bar"></span>
@@ -48,12 +58,16 @@
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <img class="mobile-menu__icon" src="assets/logo-icon-vp-white.png" alt="" width="48" height="48">
     <nav class="mobile-menu__links" aria-label="Mobile navigation">
-      <a href="#approach">Approach</a>
-      <a href="#services">Services</a>
-      <a href="#results">Results</a>
+      <a href="#top">Home</a>
+      <a href="#services">Solutions</a>
+      <a href="#results">Industries</a>
+      <a href="#services">Vanora AI</a>
+      <a href="#approach">How We Work</a>
+      <a href="#about">Insights</a>
       <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="btn btn--primary">Book a strategy call</a>
+    <a href="#contact" class="btn btn--primary">Book a strategy session</a>
   </div>
 
   <main>
@@ -69,25 +83,49 @@
           </p>
 
           <h1 class="hero__heading">
-            <span class="hero__line reveal-load" style="--delay:120ms">Most firms hand you a strategy.</span>
-            <span class="hero__line hero__line--emphasis reveal-load" style="--delay:240ms">We <span class="hero__install">install</span> it.</span>
+            <span class="hero__line reveal-load" style="--delay:120ms">We build the systems behind <span class="hero__accent-word">predictable</span> growth.</span>
           </h1>
 
           <p class="hero__subhead reveal-load" style="--delay:300ms">
-            Vanora Partners builds your growth strategy and stays to execute it — the systems, the revenue engine, the operating cadence. No orphaned decks. No theory. Just infrastructure that runs long after the engagement ends.
+            Vanora combines strategy, AI, revenue systems, automation, talent and hands-on execution to help ambitious companies sell more, collect faster, operate better and scale intelligently.
           </p>
 
           <div class="hero__ctas reveal-load" style="--delay:450ms">
-            <a href="#contact" class="btn btn--primary">Book a strategy call</a>
-            <a href="#approach" class="link-arrow">See how we work <span aria-hidden="true">&rarr;</span></a>
+            <a href="#contact" class="btn btn--primary">Book a strategy session</a>
+            <a href="#services" class="link-arrow">Explore our solutions <span aria-hidden="true">&rarr;</span></a>
           </div>
 
-          <p class="hero__credibility reveal-load" style="--delay:450ms">Strategy and execution for firms that need results, not slideware</p>
+          <p class="hero__credibility reveal-load" style="--delay:450ms">Built for ambitious companies, founders and executive teams.</p>
+
+          <div class="hero__micro-cards reveal-load" style="--delay:560ms">
+            <div class="micro-card">
+              <p class="micro-card__title">Revenue Systems</p>
+              <p class="micro-card__body">Build predictable pipelines</p>
+            </div>
+            <div class="micro-card">
+              <p class="micro-card__title">AI Automation</p>
+              <p class="micro-card__body">Remove repetitive work</p>
+            </div>
+            <div class="micro-card">
+              <p class="micro-card__title">Business Transformation</p>
+              <p class="micro-card__body">Scale with stronger operations</p>
+            </div>
+          </div>
         </div>
 
         <div class="hero__visual reveal-load" style="--delay:150ms">
-          <div class="placeholder placeholder--portrait">
-            <span class="placeholder__label">HERO VISUAL — 4:5<br>SUPPLY hero-visual.jpg</span>
+          <div class="hero__visual-frame">
+            <img src="assets/vanora-homepage-hero.png" alt="Vanora Partners executive team reviewing a revenue dashboard in a boardroom" width="1774" height="887" loading="eager" fetchpriority="high">
+          </div>
+
+          <div class="brand-seal" aria-hidden="true">
+            <svg class="brand-seal__ring" viewBox="0 0 200 200">
+              <path id="brandSealPath" fill="none" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"></path>
+              <text class="brand-seal__text">
+                <textPath href="#brandSealPath" startOffset="0%">STRATEGY INSTALLED &bull; REVENUE ENGINEERED &bull; GROWTH DELIVERED &bull; </textPath>
+              </text>
+            </svg>
+            <img class="brand-seal__mark" src="assets/logo-icon-vp-navy.png" alt="" width="34" height="34">
           </div>
         </div>
       </div>
