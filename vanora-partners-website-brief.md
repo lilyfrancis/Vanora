@@ -214,15 +214,50 @@ Map each challenge to the closest real solution described elsewhere on the page 
 ### SECTION 9 — Sector solutions
 **PURPOSE:** Show relevance across industries without a generic template feel.
 
-**LAYOUT:** Image-based card grid, one distinct photo per sector (no repeats — do not reuse the same meeting image twice). Card reveals a short sector-specific line on hover, focus, or tap, with a non-hover fallback so the content is always available (e.g. visible on mobile by default, or a `<details>`-style disclosure).
+**LAYOUT:** Six flagship sector cards, fixed order below, each a hybrid card: sector photograph (3:2, top or side), one consistent Lucide line icon (same icon style/weight across all six — don't mix filled and line icons), sector name, one short business-challenge line, a line of relevant Vanora solutions, and an "Explore solutions" CTA (sentence case per the button system, brief text below shows emphasis caps). All copy below is final — use verbatim, including alt text. **Every card's information is visible by default** — challenge/solutions text is not hover-only; hover/focus only adds a subtle lift/border-glow, never reveals hidden content. Grid: 3-up desktop, 2-up tablet, 1-up mobile.
 
 **COPY:**
 - H2: `"Every industry loses revenue differently."`
-- Sectors: `Property and Real Estate` · `Hospitality` · `Education` · `Distribution and FMCG` · `Professional Services` · `Technology and Digital Businesses`
 
-**IMAGE:** `[IMAGE PLACEHOLDER: one photo per sector, 6 total]` — none of the 4 supplied images are sector-specific; do not reuse the hero/about/training photos here. Flag to the owner as still needed.
+1. **Financial Services** — icon: `Landmark`
+   Challenge: `"Improve acquisition, collections, service delivery and customer retention."`
+   Solutions: `"AI customer service, collections automation, executive intelligence and revenue operations."`
+   Image: `assets/financial-services.webp` — alt: `"African financial professionals analysing business and customer performance data"`
+2. **Telecommunications** — icon: `RadioTower`
+   Challenge: `"Manage high-volume customer interactions, renewals and service workflows."`
+   Solutions: `"Customer automation, lead qualification, retention systems and performance reporting."`
+   Image: `assets/telecommunications.webp` — alt: `"African telecommunications professionals monitoring network and business operations"`
+3. **Property and Real Estate** — icon: `Building2`
+   Challenge: `"Convert more enquiries, improve agent follow-up and accelerate property payments."`
+   Solutions: `"Lead management, sales automation, proposal generation and payment follow-up."`
+   Image: `assets/property-and-real-estate.webp` — alt: `"African real estate professionals reviewing plans for a property development"`
+4. **Distribution and FMCG** — icon: `Warehouse`
+   Challenge: `"Improve order capture, distributor visibility, collections and territory performance."`
+   Solutions: `"Sales automation, distributor management, inventory intelligence and revenue reporting."`
+   Image: `assets/distribution-and-fmcg.webp` — alt: `"African supply-chain professional managing consumer-goods inventory in a warehouse"`
+5. **Professional Services** — icon: `BriefcaseBusiness`
+   Challenge: `"Turn expertise into a stronger and more predictable commercial pipeline."`
+   Solutions: `"Lead generation, proposals, tender support, client management and renewal automation."`
+   Image: `assets/professional-services.webp` — alt: `"African professional-services team discussing client and business strategy"`
+6. **Technology and Digital Businesses** — icon: `Cpu`
+   Challenge: `"Build repeatable acquisition, onboarding, retention and market-entry systems."`
+   Solutions: `"Go-to-market strategy, pipeline automation, customer success and AI implementation."`
+   Image: `assets/technology-and-digital-businesses.webp` — alt: `"African technology professionals collaborating in a modern digital workspace"`
 
-**MOTION:** Reveal on scroll; hover/focus reveal is a gentle crossfade or lift, not jarring.
+Each card CTA: `Explore solutions` — link to the closest matching content (Section 6 challenge selector, Section 7 AI products, or Section 8 revenue engine) rather than a page that doesn't exist yet. The grid is built to cleanly accept a 7th+ card later if another sector is added — don't hardcode assumptions around exactly six.
+
+**IMAGE TREATMENT (applies to this section and every image in the site):**
+- All 6 sector photos are supplied at 1536×1024 (3:2) — keep every sector card at that ratio; don't crop to square or a different aspect.
+- Preserve the original files; produce optimized derivatives only when it doesn't visibly reduce quality — this is vanilla HTML/CSS/JS, no framework image component exists, so implement manually with `<picture>` (WebP/AVIF sources, original as fallback), explicit `width`/`height` to prevent layout shift, `loading="lazy"` (except the hero image), `decoding="async"`.
+- `object-fit: cover`; set `object-position` per image where a face/subject needs to stay centred at narrow crops (verify at each breakpoint below — don't let a face get cut at the jaw).
+- No text baked into image files. No darkening overlays beyond what's needed for the two-state nav over the hero. No large text over faces anywhere on the page.
+- Card corner radius matches the site's existing card radius (4px per `CLAUDE.md` §2.4 shape rules).
+- Any colour correction is a subtle, consistent CSS filter applied site-wide (if used at all) — not per-image tweaks that make cards feel inconsistent.
+- Don't create duplicate image files for the same use — one asset per role.
+
+**RESPONSIVE CHECK (this section, and re-verify site-wide):** 1440 / 1280 / 1024 / 768 / 430 / 390 / 360px. At each: faces framed correctly, sector image heights consistent within the grid, no horizontal overflow, challenge/solutions text readable and not hover-gated, no layout shift on image load, cards easy to scan and tap on mobile (44px+ CTA targets).
+
+**MOTION:** Cards stagger-reveal on scroll (existing pattern); hover/focus = subtle lift + border glow only, no content reveal.
 
 ---
 
@@ -336,7 +371,7 @@ No invented leadership names, titles, or bios — `[PLACEHOLDER]` if/when the ow
 ### SECTION 16 — Final CTA
 **PURPOSE:** Convert. The strongest close on the page.
 
-**LAYOUT:** Full-width `--navy-deep` band, faint gold ◆ watermark, restrained glass details. Centered.
+**LAYOUT:** Full-width `--navy-deep` band, faint gold ◆ watermark. Asymmetric split, not purely centered: text + CTAs on the left ~60%, `assets/strategic-partnership.webp` on the right ~40% at natural brightness with a thin gold 1px frame (existing hero-visual framing pattern) — this is where the supplied handshake photo lives; it's a partnership visual, not a sector photo, so it doesn't belong in Section 9's grid. Keep the photo unobstructed — no headline text crosses over it, and no glass panel darkens it beyond the frame. On mobile, stack: text first, image below at full width.
 
 **COPY:**
 - Eyebrow: `◆ YOUR NEXT GROWTH MILESTONE`
@@ -344,7 +379,9 @@ No invented leadership names, titles, or bios — `[PLACEHOLDER]` if/when the ow
 - Body: `"Vanora brings strategy, AI, automation, talent and execution together to help your business sell more, collect faster and scale intelligently."`
 - Buttons: `Book a strategy session` (primary, gold) · `Speak with a growth partner` (secondary, gold outline)
 
-**MOTION:** ◆ watermark drifts slowly; CTA has a soft gold glow on hover/focus. Static under reduced motion.
+**IMAGE:** `assets/strategic-partnership.webp` — alt: `"Business leaders establishing a strategic growth partnership"`. Same treatment rules as Section 9 (explicit width/height, lazy-load, `object-fit: cover`, no darkening beyond the frame, no text over the handshake).
+
+**MOTION:** ◆ watermark drifts slowly; CTA has a soft gold glow on hover/focus; image has the same subtle scale-in as the hero visual (1.04→1.0) on first reveal. Static under reduced motion.
 
 ---
 
@@ -396,7 +433,7 @@ Same discipline as `CLAUDE.md`: fade + 16px rise, ~600ms, cubic-bezier(0.22,1,0.
 - [ ] All 17 sections built with the verbatim copy above, one at a time, checked in with the owner at the hero before continuing.
 - [ ] Challenge-based solution selector fully accessible (keyboard, touch, no hover-only content).
 - [ ] Revenue Leakage Assessment form built frontend-only, clearly marked as unconnected to a real endpoint.
-- [ ] Sector-solution photography flagged as still needed (6 images).
+- [ ] All 6 sector cards + the strategic-partnership CTA image built per Section 9/16 image-treatment spec (ratio, lazy-load, no layout shift, accessible without hover).
 - [ ] Responsive at 1440/1280/1024/768/430/390/360.
 - [ ] Accessibility pass (focus, contrast, alt, aria, keyboard, touch targets).
 - [ ] SEO meta + structured data updated for the new positioning.
@@ -406,11 +443,10 @@ Same discipline as `CLAUDE.md`: fade + 16px rise, ~600ms, cubic-bezier(0.22,1,0.
 
 ## 8. Assets status
 
-**Supplied (in `/assets`):** `logo-full-navy.png`, `logo-full-white.png`, `logo-icon-vp-navy.png`, `logo-icon-vp-white.png`, `vanora-homepage-hero.png`, `vanora-strategy-installed.png`, `vanora-executive-advisory.png`, `vanora-revenue-growth-training.png`.
+**Supplied (in `/assets`):** `logo-full-navy.png`, `logo-full-white.png`, `logo-icon-vp-navy.png`, `logo-icon-vp-white.png`, `vanora-homepage-hero.png`, `vanora-strategy-installed.png`, `vanora-executive-advisory.png`, `vanora-revenue-growth-training.png`, `financial-services.webp`, `telecommunications.webp`, `property-and-real-estate.webp`, `distribution-and-fmcg.webp`, `professional-services.webp`, `technology-and-digital-businesses.webp`, `strategic-partnership.webp`. Sector photography (Section 9) and the partnership photo (Section 16) are fully supplied — no image placeholders remain.
 
 **Still needed from the owner:**
-1. 6 sector-specific photos (Property, Hospitality, Education, Distribution/FMCG, Professional Services, Technology) — one distinct image per sector, no repeats of the 4 boardroom images above.
-2. Confirmed stat numbers for Measurable Outcomes (Section 12) — currently category labels only, no numbers.
-3. A real backend/API endpoint for the Revenue Leakage Assessment form (Section 13) — frontend will be built and clearly marked as unconnected until this exists.
-4. Leadership names/titles/bios, if a leadership preview grid (beyond the current About copy) is wanted in Section 14.
-5. Confirmation of existing footer contact info and social links to carry forward unchanged (no new ones invented).
+1. Confirmed stat numbers for Measurable Outcomes (Section 12) — currently category labels only, no numbers.
+2. A real backend/API endpoint for the Revenue Leakage Assessment form (Section 13) — frontend will be built and clearly marked as unconnected until this exists.
+3. Leadership names/titles/bios, if a leadership preview grid (beyond the current About copy) is wanted in Section 14.
+4. Confirmation of existing footer contact info and social links to carry forward unchanged (no new ones invented).
