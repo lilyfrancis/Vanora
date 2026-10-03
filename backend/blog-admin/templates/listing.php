@@ -1,3 +1,20 @@
+<?php
+/**
+ * Renders the full insights.html content — nav/footer identical to the
+ * rest of the site. With zero published posts it reproduces the
+ * original "coming soon" copy exactly, so nothing changes until the
+ * first post goes live.
+ */
+
+declare(strict_types=1);
+
+function blog_render_listing_html(array $publishedPosts): string
+{
+    $mainContent = empty($publishedPosts)
+        ? blog_insights_empty_state()
+        : blog_insights_grid($publishedPosts);
+
+    return <<<HTML
 <!doctype html>
 <html lang="en">
 <head>
@@ -75,15 +92,7 @@
   </div>
 
   <main>
-    <div class="page-intro" style="min-height:60vh;display:flex;align-items:center;">
-      <div class="page-intro__inner">
-        <p class="eyebrow reveal" style="--delay:0ms">
-          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Insights
-        </p>
-        <h1 class="page-intro__heading reveal" style="--delay:80ms">Coming soon.</h1>
-        <p class="page-intro__body reveal" style="--delay:160ms">We're building out a library of practical thinking on revenue growth, AI automation and business transformation. Nothing published here yet — check back, or <a href="index.html#contact" style="color:var(--gold-soft);text-decoration:underline;">book a strategy session</a> in the meantime.</p>
-      </div>
-    </div>
+{$mainContent}
   </main>
 
   <footer class="site-footer">
@@ -134,3 +143,72 @@
   <script src="main.js"></script>
 </body>
 </html>
+HTML;
+}
+
+function blog_insights_empty_state(): string
+{
+    return <<<HTML
+    <div class="page-intro" style="min-height:60vh;display:flex;align-items:center;">
+      <div class="page-intro__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Insights
+        </p>
+        <h1 class="page-intro__heading reveal" style="--delay:80ms">Coming soon.</h1>
+        <p class="page-intro__body reveal" style="--delay:160ms">We're building out a library of practical thinking on revenue growth, AI automation and business transformation. Nothing published here yet — check back, or <a href="index.html#contact" style="color:var(--gold-soft);text-decoration:underline;">book a strategy session</a> in the meantime.</p>
+      </div>
+    </div>
+HTML;
+}
+
+function blog_insights_grid(array $posts): string
+{
+    $cards = [];
+    $delay = 0;
+    foreach ($posts as $post) {
+        $title = htmlspecialchars($post['title'], ENT_QUOTES, 'UTF-8');
+        $excerpt = htmlspecialchars($post['excerpt'], ENT_QUOTES, 'UTF-8');
+        $slug = htmlspecialchars($post['slug'], ENT_QUOTES, 'UTF-8');
+        $date = $post['published_at'] ? date('j F Y', strtotime($post['published_at'])) : '';
+        $image = $post['featured_image'] ?: '';
+        $imageAlt = htmlspecialchars($post['featured_image_alt'] ?: $post['title'], ENT_QUOTES, 'UTF-8');
+
+        $imageTag = $image
+            ? '<img src="' . htmlspecialchars($image, ENT_QUOTES) . '" alt="' . $imageAlt . '" width="1536" height="1024" loading="lazy" decoding="async">'
+            : '<div class="placeholder post-card__image-placeholder"><span class="placeholder__label">NO FEATURED IMAGE</span></div>';
+
+        $cards[] = <<<CARD
+          <article class="post-card reveal" style="--delay:{$delay}ms">
+            <a href="blog/{$slug}.html" class="post-card__image-wrap">
+              {$imageTag}
+            </a>
+            <p class="post-card__date">{$date}</p>
+            <h3><a href="blog/{$slug}.html">{$title}</a></h3>
+            <p class="post-card__excerpt">{$excerpt}</p>
+            <a href="blog/{$slug}.html" class="link-arrow">Read more <span aria-hidden="true">&rarr;</span></a>
+          </article>
+CARD;
+        $delay += 80;
+    }
+    $cardsHtml = implode("\n", $cards);
+
+    return <<<HTML
+    <div class="page-intro">
+      <div class="page-intro__inner">
+        <p class="eyebrow reveal" style="--delay:0ms">
+          <span class="eyebrow__diamond" aria-hidden="true">&#9670;</span> Insights
+        </p>
+        <h1 class="page-intro__heading reveal" style="--delay:80ms">Ideas on revenue, AI and growth.</h1>
+        <p class="page-intro__body reveal" style="--delay:160ms">Practical thinking from the Vanora team on building systems that work.</p>
+      </div>
+    </div>
+
+    <section class="post-grid-section">
+      <div class="post-grid-section__inner">
+        <div class="post-grid">
+{$cardsHtml}
+        </div>
+      </div>
+    </section>
+HTML;
+}
