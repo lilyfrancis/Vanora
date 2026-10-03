@@ -748,6 +748,177 @@ h1, h2, h3, p { margin: 0; }
 }
 
 /* ==========================================================================
+   Blog — article page
+   ========================================================================== */
+.article-header__meta {
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, 0.6);
+}
+
+.article {
+  background: var(--ivory);
+  padding: var(--section-padding) 0;
+}
+.article__inner {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.article__image-frame {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--gold);
+  margin-bottom: 2.5rem;
+}
+.article__image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article__body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--slate);
+}
+.article__body h1,
+.article__body h2,
+.article__body h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.article__body h1 { font-size: 2rem; }
+.article__body h2 { font-size: 1.625rem; }
+.article__body h3 { font-size: 1.25rem; }
+.article__body p { margin: 0 0 1.25rem; }
+.article__body ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.article__body li { margin-bottom: 0.5rem; }
+.article__body a { color: var(--gold-deep); text-decoration: underline; text-underline-offset: 2px; }
+.article__body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink);
+}
+.article__body img {
+  width: 100%;
+  border-radius: var(--radius);
+  margin: 1.5rem 0;
+}
+.article__back {
+  margin-top: 2.5rem;
+  display: inline-flex;
+}
+
+.article-cta {
+  background: var(--ink);
+  padding: 3rem 0;
+  text-align: center;
+}
+.article-cta__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.article-cta__text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ivory);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Blog — Insights listing grid
+   ========================================================================== */
+.post-grid-section {
+  background: var(--ivory);
+  padding: 0 0 var(--section-padding);
+}
+.post-grid-section__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.post-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--duration-hover) ease, box-shadow var(--duration-hover) ease;
+}
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -24px rgba(4, 27, 68, 0.35);
+}
+.post-card__image-wrap {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+.post-card__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+.post-card__date {
+  margin: 1.25rem 1.25rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.post-card h3 {
+  margin: 0.5rem 1.25rem 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.post-card h3 a { color: var(--ink); }
+.post-card__excerpt {
+  margin: 0.6rem 1.25rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+.post-card .link-arrow {
+  margin: 1rem 1.25rem 1.25rem;
+}
+
+/* ==========================================================================
    Business problems
    ========================================================================== */
 .problems {
@@ -2081,7 +2252,8 @@ h1, h2, h3, p { margin: 0; }
   .ai-card,
   .problem-card,
   .reason-card,
-  .outcome-card {
+  .outcome-card,
+  .post-card {
     transition: none;
   }
   html { scroll-behavior: auto; }
@@ -2188,6 +2360,8 @@ h1, h2, h3, p { margin: 0; }
   .why-vanora__reasons { grid-template-columns: 1fr 1fr; }
   .partners__grid { grid-template-columns: repeat(2, 1fr); }
   .automation-preview { grid-template-columns: 1fr; gap: 2rem; }
+  .post-grid { grid-template-columns: 1fr; }
+  .article-cta__inner { flex-direction: column; }
 
   .why-vanora__grid {
     grid-template-columns: 1fr;
