@@ -23,3 +23,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Blog posts and uploaded blog images are generated live on the server by
+# backend/blog-admin — content, not code. insights.html itself stays
+# tracked (it starts as the "coming soon" placeholder) but will diverge
+# from git once real posts are published; that's expected, see
+# backend/blog-admin/README.md.
+/blog/*.html
+/assets/blog/*
+!/assets/blog/.gitkeep

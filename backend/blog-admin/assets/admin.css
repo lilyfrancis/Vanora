@@ -1,0 +1,156 @@
+/* Vanora Insights Admin — minimal utilitarian styling for a one-person
+   internal tool. Reuses the site's own colour tokens for brand feel
+   without pulling in the public site's stylesheet (different layout
+   needs — tables, forms — so this is its own small system). */
+
+:root {
+  --ink: #041B44;
+  --gold: #C6A15A;
+  --gold-deep: #795E2A;
+  --ivory: #FAF8F3;
+  --slate: #5B6473;
+  --line: #E4DECE;
+  --white: #FFFFFF;
+  --danger: #8a2e1f;
+  --success: #2f5d3a;
+}
+
+* { box-sizing: border-box; }
+body.admin-body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+body.admin-body--centered {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a { color: var(--gold-deep); }
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--ink);
+  color: var(--ivory);
+}
+.admin-header h1 { margin: 0; font-size: 1.1rem; }
+.admin-header__nav { display: flex; gap: 1.5rem; }
+.admin-header__nav a { color: var(--ivory); text-decoration: none; font-size: 0.9rem; }
+.admin-header__nav a:hover { color: var(--gold); }
+
+.admin-main { max-width: 960px; margin: 0 auto; padding: 2rem; }
+.admin-main--editor { max-width: 1100px; }
+
+.admin-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.admin-toolbar h2 { margin: 0; }
+
+.admin-empty { color: var(--slate); padding: 2rem 0; }
+
+.admin-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--line); }
+.admin-table th, .admin-table td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.admin-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--slate); }
+.admin-table__slug { font-size: 0.8rem; color: var(--slate); margin-top: 0.2rem; }
+.admin-table__actions { display: flex; gap: 1rem; align-items: center; white-space: nowrap; }
+.admin-table__delete-form { display: inline; margin: 0; }
+.admin-table__delete { background: none; border: none; padding: 0; color: var(--danger); cursor: pointer; font: inherit; text-decoration: underline; }
+
+.status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.status-badge--published { background: #e4f0e6; color: var(--success); }
+.status-badge--draft { background: var(--line); color: var(--slate); }
+
+.admin-alert { padding: 0.75rem 1rem; border-radius: 4px; margin-bottom: 1.25rem; list-style: none; }
+.admin-alert--error { background: #fbe9e6; color: var(--danger); border: 1px solid #e3b3a8; }
+.admin-alert--success { background: #e4f0e6; color: var(--success); border: 1px solid #b7d6bd; }
+
+.login-card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 2.5rem; width: 100%; max-width: 360px; }
+.login-card h1 { margin: 0 0 0.25rem; font-size: 1.3rem; }
+.login-card__sub { margin: 0 0 1.5rem; color: var(--slate); font-size: 0.9rem; }
+
+label { display: block; font-size: 0.8rem; font-weight: 600; margin: 1rem 0 0.35rem; color: var(--ink); }
+label:first-of-type { margin-top: 0; }
+.field-hint { font-weight: 400; color: var(--slate); font-size: 0.78rem; }
+
+input[type="text"], input[type="password"], input[type="email"], textarea, select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+  background: var(--white);
+  color: var(--ink);
+}
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+textarea { resize: vertical; }
+
+.btn-admin {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid var(--ink);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+.btn-admin--primary { background: var(--ink); color: var(--ivory); }
+.btn-admin--primary:hover { background: #0B2657; }
+.btn-admin--full { width: 100%; text-align: center; }
+
+.editor-grid { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start; }
+.editor-main, .editor-sidebar { min-width: 0; }
+.editor-card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 1.25rem; margin-bottom: 1.25rem; }
+.editor-card h3 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+
+.slug-row { display: flex; align-items: center; gap: 0.4rem; }
+.slug-row__prefix, .slug-row__suffix { color: var(--slate); font-size: 0.9rem; white-space: nowrap; }
+.slug-row input { flex: 1; }
+
+.editor-tabs { display: flex; gap: 0.5rem; margin-top: 1.25rem; }
+.editor-tab { padding: 0.4rem 0.9rem; border: 1px solid var(--line); background: var(--white); border-radius: 4px 4px 0 0; cursor: pointer; font: inherit; font-size: 0.85rem; }
+.editor-tab.is-active { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+
+.editor-body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9rem; }
+.editor-preview {
+  border: 1px solid var(--line);
+  border-radius: 0 4px 4px 4px;
+  padding: 1rem 1.25rem;
+  min-height: 300px;
+  background: var(--white);
+}
+.editor-preview h1, .editor-preview h2, .editor-preview h3 { font-family: Georgia, serif; }
+.editor-preview img { max-width: 100%; border-radius: 4px; }
+
+.visually-hidden-admin { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.image-preview-wrap { margin-bottom: 0.75rem; }
+.image-preview-wrap img { width: 100%; border-radius: 4px; border: 1px solid var(--line); display: block; }
+
+.admin-status { font-size: 0.8rem; margin-top: 0.4rem; min-height: 1.1em; }
+.admin-status--error { color: var(--danger); }
+.admin-status--success { color: var(--success); }
+
+@media (max-width: 860px) {
+  .editor-grid { grid-template-columns: 1fr; }
+  .admin-main { padding: 1.25rem; }
+  .admin-header { padding: 1rem 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .admin-table { display: block; overflow-x: auto; }
+}
+
+@media (max-width: 480px) {
+  .login-card { padding: 1.75rem; max-width: 100%; }
+  .admin-toolbar { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
